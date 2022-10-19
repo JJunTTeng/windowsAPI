@@ -1,8 +1,9 @@
 ﻿// windowsAPI.cpp : 애플리케이션에 대한 진입점을 정의합니다.
 //
 
-#include "framework.h"
+#include "Common.h"
 #include "windowsAPI.h"
+#include "yaApplication.h"
 
 #define MAX_LOADSTRING 100
 
@@ -17,9 +18,11 @@ BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
+
+//int main() {}
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
-                     _In_ LPWSTR    lpCmdLine,
+                     _In_ LPWSTR    lpCmdLine,          //LP = * STR 포인터 
                      _In_ int       nCmdShow)
 {
     UNREFERENCED_PARAMETER(hPrevInstance);
@@ -43,13 +46,32 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     MSG msg;
 
     // 기본 메시지 루프입니다:
-    while (GetMessage(&msg, nullptr, 0, 0))
+    while (true)
     {
-        if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+        if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
         {
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
+            if (WM_QUIT == msg.message)
+                break;
+
+            if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+            {
+                TranslateMessage(&msg);
+                DispatchMessage(&msg);
+            }
         }
+
+        else
+        {
+            //게임 실행
+            ya::Application::GetInstance().Tick();
+        }
+
+    }
+
+    //종료가 되었을때
+    if (WM_QUIT == msg.message)
+    {
+        //메모리 해제 작업
     }
 
     return (int) msg.wParam;
@@ -66,7 +88,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 {
     WNDCLASSEXW wcex;
 
-    wcex.cbSize = sizeof(WNDCLASSEX);
+    wcex.cbSize = sizeof(WNDCLASSEX);   //버퍼 사이즈
 
     wcex.style          = CS_HREDRAW | CS_VREDRAW;
     wcex.lpfnWndProc    = WndProc;
@@ -97,16 +119,24 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
-   HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
+   WindowData Windowdata;
+   Windowdata.width = 1920;
+   Windowdata.height = 1080;
 
+   HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
+      CW_USEDEFAULT, 0, 1920, 1080, nullptr, nullptr, hInstance, nullptr);
+
+   Windowdata.hWnd = hWnd;
+   Windowdata.hdc = nullptr;
    if (!hWnd)
    {
       return FALSE;
    }
-
+   SetWindowPos(hWnd, nullptr, 0, 0, Windowdata.width, Windowdata.height, 0);
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
+
+   ya::Application::GetInstance().Initalize(Windowdata);
 
    return TRUE;
 }
@@ -125,6 +155,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
     {
+
     case WM_COMMAND:
         {
             int wmId = LOWORD(wParam);
@@ -142,16 +173,52 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             }
         }
         break;
+
+    case WM_KEYDOWN:
+    {  
+        //무효화 영역발생시키기 (WM_PAINT 메시지를 호출해주겠다)
+        InvalidateRect(hWnd, nullptr, 0);
+    }
+    case WM_TIMER:
+    {
+ 
+        InvalidateRect(hWnd, nullptr, 0);
+
+    }
+
     case WM_PAINT:
         {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
+
+            //스톡 오브젝트
+            //GetStockObject(GRAY_BRUSH)
+
+            HBRUSH hClearBrush = CreateSolidBrush(RGB(100, 100, 100));
+            HBRUSH oldClearBrush = (HBRUSH)SelectObject(hdc, hClearBrush);
+            Rectangle(hdc, -1, -1, 1921, 1081);
+            SelectObject(hdc, oldClearBrush);
+
+           DeleteObject(hClearBrush);
+
+
             // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
             EndPaint(hWnd, &ps);
+
+            //문자
+            //HFONT
+
+            //HBITMAP
+
+
+            
         }
         break;
     case WM_DESTROY:
+    {
         PostQuitMessage(0);
+        KillTimer(hWnd, 0);
+    }
         break;
     default:
         return DefWindowProc(hWnd, message, wParam, lParam);
