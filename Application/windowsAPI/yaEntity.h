@@ -18,10 +18,4 @@ namespace ya
 		std::wstring mName;
 		UINT mID;
 	};
-
-
-	class GameObject : public Entity
-	{
-
-	};
 }

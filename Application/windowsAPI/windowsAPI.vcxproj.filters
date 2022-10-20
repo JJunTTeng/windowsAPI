@@ -1,49 +1,122 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="소스 파일">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="main">
+      <UniqueIdentifier>{b63e384f-91c0-4642-a6a8-bf7889eb43dc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="헤더 파일">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="리소스 파일">
+    <Filter Include="main\리소스 파일">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Endgine">
+      <UniqueIdentifier>{c5dcf808-b7d1-42ee-838c-b3ecd656bb1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Client">
+      <UniqueIdentifier>{7c541861-34cb-4d13-b0b6-03ab2d82d829}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Endgine\Common">
+      <UniqueIdentifier>{c6dcb906-5fbf-4f64-8195-02de5ee671e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Endgine\Manager">
+      <UniqueIdentifier>{c1135c34-f3f9-4f61-a238-abb211ed57df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Endgine\Scene">
+      <UniqueIdentifier>{6d55bcab-3d16-490d-a754-3b414480cedc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Endgine\GameObject">
+      <UniqueIdentifier>{a2321441-bcae-49c9-aa8d-435a3c754763}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Endgine\High Level Interface">
+      <UniqueIdentifier>{a823431c-5941-4854-be53-9496959a3a92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Endgine\Scene\Base">
+      <UniqueIdentifier>{68705bbb-4582-4ce7-b13c-023f4e732310}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Endgine\GameObject\Base">
+      <UniqueIdentifier>{fdaef02d-c129-4b5f-90ef-9b5f9714139b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>main</Filter>
     </ClInclude>
     <ClInclude Include="Resource.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>main</Filter>
     </ClInclude>
     <ClInclude Include="windowsAPI.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>main</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
+    <ClInclude Include="yaSceneManager.h">
+      <Filter>Endgine\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Common.h">
+      <Filter>Endgine\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="def.h">
+      <Filter>Endgine\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Maths.h">
+      <Filter>Endgine\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="yaEntity.h">
+      <Filter>Endgine\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="yaApplication.h">
+      <Filter>Endgine\High Level Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="yaLogoScene.h">
+      <Filter>Endgine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="yaScene.h">
+      <Filter>Endgine\Scene\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="yaGameObject.h">
+      <Filter>Endgine\GameObject\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="yaPlayer.h">
+      <Filter>Endgine\GameObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="windowsAPI.rc">
-      <Filter>리소스 파일</Filter>
+      <Filter>main\리소스 파일</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
-      <Filter>리소스 파일</Filter>
+      <Filter>main\리소스 파일</Filter>
     </Image>
     <Image Include="windowsAPI.ico">
-      <Filter>리소스 파일</Filter>
+      <Filter>main\리소스 파일</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="yaSceneManager.cpp">
+      <Filter>Endgine\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="yaEntity.cpp">
+      <Filter>Endgine\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="yaApplication.cpp">
+      <Filter>Endgine\High Level Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="yaLogoScene.cpp">
+      <Filter>Endgine\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="yaScene.cpp">
+      <Filter>Endgine\Scene\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="yaGameObject.cpp">
+      <Filter>Endgine\GameObject\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="yaPlayer.cpp">
+      <Filter>Endgine\GameObject</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

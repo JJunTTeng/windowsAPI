@@ -10,17 +10,19 @@ namespace ya
 	public:
 		static Application& GetInstance()
 		{
+			static Application mInstance;
 			return mInstance;
 		}
 
-		Application();
-		~Application();
 
 		void Initalize(WindowData data);
 		void Tick();
 
 	private:
-		static Application mInstance;
+		Application();
+		~Application();
+
+	private:
 		WindowData mWindowData;
 	};
 

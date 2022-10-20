@@ -194,12 +194,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             //스톡 오브젝트
             //GetStockObject(GRAY_BRUSH)
 
-            HBRUSH hClearBrush = CreateSolidBrush(RGB(100, 100, 100));
-            HBRUSH oldClearBrush = (HBRUSH)SelectObject(hdc, hClearBrush);
-            Rectangle(hdc, -1, -1, 1921, 1081);
-            SelectObject(hdc, oldClearBrush);
+           // HBRUSH hClearBrush = CreateSolidBrush(RGB(100, 100, 100));
+           // HBRUSH oldClearBrush = (HBRUSH)SelectObject(hdc, hClearBrush);
+           // Rectangle(hdc, -1, -1, 1921, 1081);
+           // SelectObject(hdc, oldClearBrush);
 
-           DeleteObject(hClearBrush);
+           //DeleteObject(hClearBrush);
 
 
             // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
