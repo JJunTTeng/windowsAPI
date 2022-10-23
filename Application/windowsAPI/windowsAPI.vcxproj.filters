@@ -79,6 +79,15 @@
     <ClInclude Include="yaPlayer.h">
       <Filter>Endgine\GameObject</Filter>
     </ClInclude>
+    <ClInclude Include="yaTime.h">
+      <Filter>Endgine\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="yaInput.h">
+      <Filter>Endgine\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="yaMissile.h">
+      <Filter>Endgine\GameObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="windowsAPI.rc">
@@ -116,6 +125,15 @@
       <Filter>Endgine\GameObject\Base</Filter>
     </ClCompile>
     <ClCompile Include="yaPlayer.cpp">
+      <Filter>Endgine\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="yaTime.cpp">
+      <Filter>Endgine\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="yaInput.cpp">
+      <Filter>Endgine\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="yaMissile.cpp">
       <Filter>Endgine\GameObject</Filter>
     </ClCompile>
   </ItemGroup>

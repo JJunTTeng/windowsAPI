@@ -1,5 +1,6 @@
 #include "yaLogoScene.h"
 #include "yaPlayer.h"
+#include "yaMissile.h"
 namespace ya
 {
 	LogoScene::LogoScene()

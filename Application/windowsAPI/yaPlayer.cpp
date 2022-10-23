@@ -1,4 +1,9 @@
 #include "yaPlayer.h"
+#include "yaTime.h"
+#include "yaInput.h"
+#include "yaMissile.h"
+#include "yaSceneManager.h"
+#include "yaScene.h"
 namespace ya
 {
 	Player::Player()
@@ -10,33 +15,38 @@ namespace ya
 	Player::~Player()
 	{
 	}
-	void Player::Initialize()
-	{
-		
-	}
 	void Player::Tick()
 	{
 		Vector2 pos = GetPos();
+		
+		if (KEY_PREESE(UP))
+		{
+			pos.y -= 100.0f * Time::DeltaTime();
+		}
+		if (KEY_PREESE(DOWN))
+		{
+			pos.y += 100.0f * Time::DeltaTime();
+		}
+		if (KEY_PREESE(LEFT))
+		{
+			pos.x -= 100.0f * Time::DeltaTime();
+		}
+		if (KEY_PREESE(RIGHT))
+		{
+			pos.x += 100.0f * Time::DeltaTime();
+		}
+		if (KEY_DOWN(A))
+		{
+			Missile* missile = new Missile();
 
-		if (GetAsyncKeyState(VK_UP) & 0x8000)
-		{
-			pos.y -= 0.01f;
-			if (GetAsyncKeyState('a') & 0x8000)
-			{
-				pos.y -= mSpeed;
-			}
-		}
-		if (GetAsyncKeyState(VK_DOWN) & 0x8000)
-		{
-			pos.y += 0.01f;
-		}
-		if (GetAsyncKeyState(VK_LEFT) & 0x8000)
-		{
-			pos.x -= 0.01f;
-		}
-		if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
-		{
-			pos.x += 0.01f;
+			Scene* playScene = SceneManager::GetPlayScene();
+
+			playScene->AddGameObject(missile);
+			missile->SetPos(GetPos());
+
+
+			missile->SetPos(Vector2(GetPos().x + (GetScale().x), GetPos().y + (GetScale().y / 2) - missile->GetScale().y / 2));
+
 		}
 
 		SetPos(pos);

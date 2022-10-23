@@ -1,5 +1,7 @@
 #include "yaApplication.h"
 #include "yaSceneManager.h"
+#include "yaTime.h"
+#include "yaInput.h"
 
 namespace ya
 {
@@ -11,12 +13,21 @@ namespace ya
 		mWindowData = data;
 		mWindowData.hdc = GetDC(data.hWnd); 
 
+		Time::Initialize();
+		Input::Initialize();
 		SceneManager::Initalize();
 	}
 
 	void ya::Application::Tick()
 	{
+		Time::Tick();
+		Input::Tick();
 		SceneManager::Tick();
+
+
+
+		Time::Render(mWindowData.hdc);
+		Input::Render(mWindowData.hdc);
 		SceneManager::Render(mWindowData.hdc);
 	}
 

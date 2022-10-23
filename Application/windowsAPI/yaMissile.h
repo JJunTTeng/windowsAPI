@@ -2,11 +2,11 @@
 #include "yaGameObject.h"
 namespace ya
 {
-	class Player : public GameObject
+	class Missile : public GameObject
 	{
 	public:
-		Player();
-		~Player();
+		Missile();
+		~Missile();
 
 		virtual void Tick()override;
 		virtual void Render(HDC hdc)override;
@@ -14,5 +14,6 @@ namespace ya
 	private:
 		float mSpeed;
 	};
-
+	
 }
+
