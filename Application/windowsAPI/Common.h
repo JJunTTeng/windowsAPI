@@ -14,12 +14,12 @@
 
 struct WindowData
 {
-	//랜더 타겟 
+	//랜더 타겟
 	// 프레임 버퍼
 	HWND hWnd;
 	HDC hdc;
 	HBITMAP backTexture;
-	HDC backBuffer;
+	HDC backBuffer;	//복제 HDC
 	UINT height;
 	UINT width;
 
@@ -30,51 +30,47 @@ struct WindowData
 		height = 0;
 		width = 0;
 	}
+
+	
 };
 
-struct Pen
+struct PEN
 {
-private:
-	HDC mHdc;
-	HPEN mOldPen;
 	HPEN mPen;
+	HPEN oldPen;
+	HDC mHDC;
 
-	Pen(HDC hdc, HPEN pen)
-		: mHdc(hdc),
-		mOldPen(NULL),
-		mPen(pen)
-	{
-		mOldPen = (HPEN)SelectObject(mHdc, pen);
+	PEN(HDC hdc, HPEN pen)
+		:mHDC(hdc),
+		mPen(pen),
+		oldPen(NULL)
+	{		
+		oldPen = (HPEN)SelectObject(hdc, pen);
 	}
-
-	~Pen()
+	~PEN()
 	{
-		SelectObject(mHdc, mOldPen);
+		SelectObject(mHDC, oldPen);
 		DeleteObject(mPen);
 	}
 
 };
 
-struct Brush
+struct BRUSH
 {
-private:
-	HDC mHdc;
-	HBRUSH mOldBrush;
 	HBRUSH mBrush;
+	HBRUSH oldBrush;
+	HDC mHDC;
 
-public:
-	Brush(HDC hdc, HBRUSH brush)
-		: mHdc(hdc),
-		mOldBrush(NULL),
-		mBrush(brush)
+	BRUSH(HDC hdc, HBRUSH Brush)
+		:mHDC(hdc),
+		mBrush(Brush),
+		oldBrush(NULL)
 	{
-		mOldBrush = (HBRUSH)SelectObject(mHdc, brush);
+		oldBrush = (HBRUSH)SelectObject(hdc, Brush);
 	}
-
-	~Brush()
+	~BRUSH()
 	{
-		SelectObject(mHdc, mOldBrush);
+		SelectObject(mHDC, oldBrush);
 		DeleteObject(mBrush);
 	}
 };
-

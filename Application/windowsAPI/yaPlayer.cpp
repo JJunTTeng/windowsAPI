@@ -10,7 +10,7 @@ namespace ya
 		: mSpeed(0.01f)
 	{
 		SetPos(Vector2{ 100,100 });
-		SetScales(Vector2{ 100,100 });
+		SetScales(Vector2{ 50,50 });
 	}
 	Player::~Player()
 	{
@@ -55,6 +55,12 @@ namespace ya
 	{
 		Vector2 pos = GetPos();
 		Vector2 Scale = GetScale();
+
+		HPEN mPen = CreatePen(PS_SOLID, 1, RGB(51,0,153));
+		PEN pen(hdc, mPen);
+
+		HBRUSH mBrush = CreateSolidBrush(RGB(153, 102, 204));
+		BRUSH brush(hdc, mBrush);
 
 		Rectangle(hdc, pos.x, pos.y, pos.x + Scale.x, pos.y + Scale.y);
 	}

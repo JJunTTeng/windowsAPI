@@ -10,7 +10,7 @@ namespace ya
 
 	void ya::Application::Initalize(WindowData data)
 	{
-		IntializeWindow(data);
+		IntializeWIndow(data);
 
 		Time::Initialize();
 		Input::Initialize();
@@ -23,7 +23,7 @@ namespace ya
 		Input::Tick();
 
 		//clear
-		Rectangle(mWindowData.backBuffer, -1, -1, mWindowData.width + 1, mWindowData.height + 1);
+		Rectangle(mWindowData.backBuffer, -1, -1, mWindowData.width+1, mWindowData.height+1);
 		SceneManager::Tick();
 
 		Time::Render(mWindowData.backBuffer);
@@ -44,8 +44,7 @@ namespace ya
 		SceneManager::Release();
 		ReleaseDC(mWindowData.hWnd, mWindowData.hdc);
 	}
-
-	void Application::IntializeWindow(WindowData data)
+	void Application::IntializeWIndow(WindowData data)
 	{
 		mWindowData = data;
 		mWindowData.hdc = GetDC(data.hWnd);
@@ -66,9 +65,5 @@ namespace ya
 		HBITMAP dafaultBitmap = (HBITMAP)SelectObject(mWindowData.backBuffer, mWindowData.backTexture);
 
 		DeleteObject(dafaultBitmap);
-
 	}
 }
-
-
-

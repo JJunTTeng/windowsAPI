@@ -18,11 +18,13 @@ namespace ya
 		void Initalize(WindowData data);
 		void Tick();
 
+
+
 	private:
 		Application();
 		~Application();
 
-		void IntializeWindow(WindowData data);
+		void IntializeWIndow(WindowData data);
 
 	private:
 		WindowData mWindowData;

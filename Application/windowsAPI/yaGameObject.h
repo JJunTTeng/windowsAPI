@@ -16,12 +16,15 @@ namespace ya
 
 		void SetPos(Vector2 pos) { mPos = pos; }
 		Vector2 GetPos() { return mPos; }
-		void SetScales(Vector2 scale) { mScale = scale; }
+		void SetScales(Vector2 Scale) { mScale = Scale; }
 		Vector2 GetScale() { return mScale; }
+		void SetSpeed(float Speed) { mSpeed = Speed; }
+		float GetSpeed() { return mSpeed; }
 
 	private:
 		Vector2 mPos;
 		Vector2 mScale;
+		float mSpeed;
 
 	};
 }
