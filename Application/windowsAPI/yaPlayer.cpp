@@ -21,19 +21,19 @@ namespace ya
 		
 		if (KEY_PREESE(UP))
 		{
-			pos.y -= 100.0f * Time::DeltaTime();
+			pos.y -= 1000.0f * Time::DeltaTime();
 		}
 		if (KEY_PREESE(DOWN))
 		{
-			pos.y += 100.0f * Time::DeltaTime();
+			pos.y += 1000.0f * Time::DeltaTime();
 		}
 		if (KEY_PREESE(LEFT))
 		{
-			pos.x -= 100.0f * Time::DeltaTime();
+			pos.x -= 1000.0f * Time::DeltaTime();
 		}
 		if (KEY_PREESE(RIGHT))
 		{
-			pos.x += 100.0f * Time::DeltaTime();
+			pos.x += 1000.0f * Time::DeltaTime();
 		}
 		if (KEY_DOWN(A))
 		{

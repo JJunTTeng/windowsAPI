@@ -4,6 +4,8 @@
 #include <vector>
 #include <list>
 #include <map>
+#include <stdlib.h>
+#include <time.h>
 #include "def.h"
 
 #include "Maths.h"
