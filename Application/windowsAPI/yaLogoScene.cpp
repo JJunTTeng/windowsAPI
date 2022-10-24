@@ -1,8 +1,6 @@
 #include "yaLogoScene.h"
 #include "yaPlayer.h"
 #include "yaMissile.h"
-#include "yameteorManager.h"
-#include "yameteor.h"
 namespace ya
 {
 	LogoScene::LogoScene()
@@ -14,11 +12,6 @@ namespace ya
 	void LogoScene::Initialize()
 	{
 		AddGameObject(new Player());
-		for (int i = 0; i < 200; i++)
-		{
-			meteor* Mmeteor = new meteor;
-			AddGameObject(Mmeteor);
-		}
 	}
 	void LogoScene::Tick()
 	{
@@ -27,7 +20,6 @@ namespace ya
 	void LogoScene::Render(HDC hdc)
 	{
 		Scene::Render(hdc);
-		Rectangle(hdc, 0, 0, 1920, 1080);
 
 	}
 }

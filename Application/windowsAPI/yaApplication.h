@@ -22,6 +22,8 @@ namespace ya
 		Application();
 		~Application();
 
+		void IntializeWindow(WindowData data);
+
 	private:
 		WindowData mWindowData;
 	};
