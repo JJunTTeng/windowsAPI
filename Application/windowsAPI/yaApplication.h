@@ -17,7 +17,7 @@ namespace ya
 
 		void Initalize(WindowData data);
 		void Tick();
-
+		WindowData GetWindowData() { return mWindowData; }
 
 
 	private:

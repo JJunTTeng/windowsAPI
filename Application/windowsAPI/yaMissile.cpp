@@ -7,7 +7,7 @@ namespace ya
 		:mSpeed(1.0f)
 	{
 		SetPos({ 100.0f,100.0f });
-		SetScales({ 50.0f,50.0f });
+		SetScales({ 20.0f,20.0f });
 	}
 	Missile::~Missile()
 	{

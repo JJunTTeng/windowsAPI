@@ -14,11 +14,11 @@ namespace ya
 	void LogoScene::Initialize()
 	{
 		AddGameObject(new Player());
-		for (int i = 0; i < 200; i++)
-		{
-			meteor* Mmeteor = new meteor;
-			AddGameObject(Mmeteor);
-		}
+		//for (int i = 0; i < 200; i++)
+		//{
+		//	meteor* Mmeteor = new meteor;
+		//	AddGameObject(Mmeteor);
+		//}
 	}
 	void LogoScene::Tick()
 	{

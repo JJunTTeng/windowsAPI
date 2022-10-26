@@ -35,6 +35,9 @@
     <Filter Include="Endgine\GameObject\Base">
       <UniqueIdentifier>{fdaef02d-c129-4b5f-90ef-9b5f9714139b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Endgine\Resource">
+      <UniqueIdentifier>{05519d88-fff0-400e-8832-0842fd9c9891}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -94,6 +97,15 @@
     <ClInclude Include="yaLogoScene.h">
       <Filter>Endgine\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="yaImage.h">
+      <Filter>Endgine\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="yaResource.h">
+      <Filter>Endgine\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="yaResouces.h">
+      <Filter>Endgine\Resource</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="windowsAPI.rc">
@@ -147,6 +159,12 @@
     </ClCompile>
     <ClCompile Include="yaLogoScene.cpp">
       <Filter>Endgine\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="yaImage.cpp">
+      <Filter>Endgine\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="yaResource.cpp">
+      <Filter>Endgine\Resource</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

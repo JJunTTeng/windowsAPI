@@ -43,6 +43,8 @@ namespace ya
 	{
 		SceneManager::Release();
 		ReleaseDC(mWindowData.hWnd, mWindowData.hdc);
+		ReleaseDC(mWindowData.hWnd, mWindowData.backBuffer);
+
 	}
 	void Application::IntializeWIndow(WindowData data)
 	{
