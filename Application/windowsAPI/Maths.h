@@ -1,48 +1,59 @@
 #pragma once
 
-struct Vector2
+namespace ya
 {
-	float x;
-	float y;
-
-	Vector2(float x, float y)
+	struct Vector2
 	{
-		this->x = x;
-		this->y = y;
-	}
-
-	Vector2(const Vector2& other) = default;
-	//Vector2(const Vector2&& other) = default;		이동생성자 - 한번 찾아보자
-
-	Vector2() = default;
-	~Vector2() = default;
+		static Vector2 Zero;
+		static Vector2 one;
+		static Vector2 Left;
+		static Vector2 Right;
+		static Vector2 Up;
+		static Vector2 Down;
 
 
-	Vector2 operator +(Vector2 other)
-	{
-		Vector2 temp;
-		temp.x = x + other.x;
-		temp.y = y + other.y;
+		float x;
+		float y;
 
-		return temp;
-	}
+		Vector2(float x, float y)
+		{
+			this->x = x;
+			this->y = y;
+		}
 
-	Vector2 operator -(Vector2 other)
-	{
-		Vector2 temp;
-		temp.x = x - other.x;
-		temp.y = y - other.y;
+		Vector2(const Vector2& other) = default;
+		//Vector2(const Vector2&& other) = default;		이동생성자 - 한번 찾아보자
 
-		return temp;
-	}
+		Vector2() = default;
+		~Vector2() = default;
 
-	Vector2 operator /(const float value)
-	{
-		Vector2 temp;
-		
-		temp.x = x / value;
-		temp.y = y / value;
 
-		return temp;
-	}
-};
+		Vector2 operator +(Vector2 other)
+		{
+			Vector2 temp;
+			temp.x = x + other.x;
+			temp.y = y + other.y;
+
+			return temp;
+		}
+
+		Vector2 operator -(Vector2 other)
+		{
+			Vector2 temp;
+			temp.x = x - other.x;
+			temp.y = y - other.y;
+
+			return temp;
+		}
+
+		Vector2 operator /(const float value)
+		{
+			Vector2 temp;
+
+			temp.x = x / value;
+			temp.y = y / value;
+
+			return temp;
+		}
+	};
+}

@@ -1,6 +1,7 @@
 #pragma once
 #include "Common.h"
 #include "yaEntity.h"
+#include "yaComponent.h"
 
 namespace ya
 {
@@ -21,7 +22,10 @@ namespace ya
 		void SetSpeed(float Speed) { mSpeed = Speed; }
 		float GetSpeed() { return mSpeed; }
 
+		void AddComponent(Component* component);
+
 	private:
+		std::vector<Component*> mComponents;
 		Vector2 mPos;
 		Vector2 mScale;
 		float mSpeed;

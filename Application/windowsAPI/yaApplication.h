@@ -28,6 +28,9 @@ namespace ya
 
 	private:
 		WindowData mWindowData;
+		HPEN mPen[(UINT)ePenColor::End];
+		HBRUSH mBrush[(UINT)eBushColor::End];
+
 	};
 
 }

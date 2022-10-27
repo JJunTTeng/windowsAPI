@@ -10,6 +10,10 @@
 
 #include "Maths.h"
 
+#pragma comment(lib,"msimg32.lib")
+
+//라이브러리 추가하는법 2개 1. 설정에서 라이브러리 디렉터리 에서 추가해주는법 (내가 새로깐 라이브러리 추가하는법) 2. 윈도우 내부에 (우리한테는 안보인다) 그것중 안추가 되어있는 부분을 추가할때 
+
 //typedef POINT Pos;
 
 struct WindowData

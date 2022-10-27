@@ -38,6 +38,12 @@
     <Filter Include="Endgine\Resource">
       <UniqueIdentifier>{05519d88-fff0-400e-8832-0842fd9c9891}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Endgine\Component">
+      <UniqueIdentifier>{eda6f452-d606-487d-a9b0-681a5fcfad50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Endgine\Component\Base">
+      <UniqueIdentifier>{fa8d5423-5b23-4b53-8f89-0e5e8390670d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -103,8 +109,23 @@
     <ClInclude Include="yaResource.h">
       <Filter>Endgine\Resource</Filter>
     </ClInclude>
-    <ClInclude Include="yaResouces.h">
+    <ClInclude Include="yaResources.h">
       <Filter>Endgine\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="yaTitleScene.h">
+      <Filter>Endgine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="yaPlayerBackGround.h">
+      <Filter>Endgine\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="yaComponent.h">
+      <Filter>Endgine\Component\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="yaCollider.h">
+      <Filter>Endgine\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="yaAnimator.h">
+      <Filter>Endgine\Component</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -165,6 +186,27 @@
     </ClCompile>
     <ClCompile Include="yaResource.cpp">
       <Filter>Endgine\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="yaTitleScene.cpp">
+      <Filter>Endgine\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="yaPlayerBackGround.cpp">
+      <Filter>Endgine\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="yaResources.cpp">
+      <Filter>Endgine\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Maths.cpp">
+      <Filter>Endgine\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="yaComponent.cpp">
+      <Filter>Endgine\Component\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="yaAnimator.cpp">
+      <Filter>Endgine\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="yaCollider.cpp">
+      <Filter>Endgine\Component</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

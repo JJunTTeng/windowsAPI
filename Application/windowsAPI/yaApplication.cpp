@@ -2,6 +2,7 @@
 #include "yaSceneManager.h"
 #include "yaTime.h"
 #include "yaInput.h"
+#include "yaResources.h"
 
 namespace ya
 {
@@ -23,6 +24,8 @@ namespace ya
 		Input::Tick();
 
 		//clear
+		BRUSH brush(mWindowData.backBuffer, mBrush[(UINT)eBushColor::Gray]);
+
 		Rectangle(mWindowData.backBuffer, -1, -1, mWindowData.width+1, mWindowData.height+1);
 		SceneManager::Tick();
 
@@ -44,10 +47,12 @@ namespace ya
 		SceneManager::Release();
 		ReleaseDC(mWindowData.hWnd, mWindowData.hdc);
 		ReleaseDC(mWindowData.hWnd, mWindowData.backBuffer);
+		Resources::Release();
 
 	}
 	void Application::IntializeWIndow(WindowData data)
 	{
+
 		mWindowData = data;
 		mWindowData.hdc = GetDC(data.hWnd);
 
@@ -67,5 +72,17 @@ namespace ya
 		HBITMAP dafaultBitmap = (HBITMAP)SelectObject(mWindowData.backBuffer, mWindowData.backTexture);
 
 		DeleteObject(dafaultBitmap);
+
+
+		mPen[(UINT)ePenColor::Red] = CreatePen(BS_SOLID, 1, RGB(255, 0, 0));
+		mPen[(UINT)ePenColor::Blue] = CreatePen(BS_SOLID, 1, RGB(0, 0, 255));
+		mPen[(UINT)ePenColor::Green] = CreatePen(BS_SOLID, 1, RGB(0, 255, 0));
+
+		mBrush[(UINT)eBushColor::Transparent] = (HBRUSH)GetStockObject(HOLLOW_BRUSH);
+		mBrush[(UINT)eBushColor::Black] = (HBRUSH)GetStockObject(BLACK_BRUSH);
+		mBrush[(UINT)eBushColor::Gray] = CreateSolidBrush(RGB(71, 71, 71));
+		mBrush[(UINT)eBushColor::WHITE] = (HBRUSH)GetStockObject(WHITE_BRUSH);
+
+
 	}
 }

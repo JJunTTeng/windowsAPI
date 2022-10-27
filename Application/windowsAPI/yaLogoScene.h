@@ -1,5 +1,6 @@
 #pragma once
 #include "yaScene.h"
+
 namespace ya
 {
 
@@ -13,7 +14,6 @@ namespace ya
 		void Tick()override;
 		void Render(HDC hdc)override;
 	private:
-
 	};
 }
 

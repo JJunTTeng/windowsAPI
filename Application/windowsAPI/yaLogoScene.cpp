@@ -3,6 +3,7 @@
 #include "yaMissile.h"
 #include "yameteorManager.h"
 #include "yameteor.h"
+#include "yaPlayerBackGround.h"
 namespace ya
 {
 	LogoScene::LogoScene()
@@ -13,6 +14,7 @@ namespace ya
 	}
 	void LogoScene::Initialize()
 	{
+		AddGameObject(new PlayerBackGround());
 		AddGameObject(new Player());
 		//for (int i = 0; i < 200; i++)
 		//{

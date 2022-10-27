@@ -5,9 +5,34 @@
 
 enum class eSceneType
 {
-	Logo,
 	Title,
+	Logo,
 	Play,
 	End,
 	MAX
+};
+
+enum class ePenColor
+{
+	Red,
+	Green,
+	Blue,
+	End
+};
+
+enum class eBushColor
+{
+	Transparent,
+	Black,
+	Gray,
+	WHITE,
+	End
+};
+
+enum class eComponentType
+{
+	Animator,
+	Collider,
+	Sound,
+	End,
 };
