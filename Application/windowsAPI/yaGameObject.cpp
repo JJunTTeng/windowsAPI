@@ -43,6 +43,11 @@ namespace ya
 	}
 	void GameObject::AddComponent(Component* component)
 	{
+		if(component == nullptr)
+			return;
+
+		component->mOwner = this;
 		mComponents.push_back(component);
+		
 	}
 }

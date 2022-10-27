@@ -1,6 +1,8 @@
 #include "yaSceneManager.h"
 #include "yaLogoScene.h"
 #include "yaTitleScene.h"
+#include "yaPlayScene.h"
+#include "yaEndScene.h"
 
 namespace ya
 {
@@ -11,17 +13,22 @@ namespace ya
 	{
 		//모든 씬들을 초기화
 
-		mScenes[(UINT)eSceneType::Title] = new TitleScene();
 		mScenes[(UINT)eSceneType::Logo] = new LogoScene();
+		mScenes[(UINT)eSceneType::Title] = new TitleScene();
+		mScenes[(UINT)eSceneType::Play] = new PlayScene();
+		mScenes[(UINT)eSceneType::End] = new EndScene();
 
-		for (int i = 0; i <= (UINT)eSceneType::Logo; i++)
+		for (int i = 0; i <= (UINT)eSceneType::End; i++)
 		{
+			if (mScenes[i] == nullptr)
+				continue;
+
 			mScenes[i]->Initialize();
 		}
 
 
 
-		mPlayScene = mScenes[(UINT)eSceneType::Title];
+		ChangeScene(eSceneType::Logo);
 		//업캐스팅
 		//다운캐스팅
 
@@ -46,5 +53,20 @@ namespace ya
 			delete scene;
 			scene = nullptr;
 		}
+	}
+	void SceneManager::ChangeScene(eSceneType type)
+	{
+		if (mPlayScene == nullptr)
+		{
+			mPlayScene = mScenes[(UINT)eSceneType::Logo];
+		}
+
+		else
+		{
+			mPlayScene->Exit();
+			mPlayScene = mScenes[(UINT)type];
+		}
+
+		mPlayScene->Enter();
 	}
 }

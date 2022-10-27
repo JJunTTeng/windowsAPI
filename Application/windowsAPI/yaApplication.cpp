@@ -29,9 +29,9 @@ namespace ya
 		Rectangle(mWindowData.backBuffer, -1, -1, mWindowData.width+1, mWindowData.height+1);
 		SceneManager::Tick();
 
-		Time::Render(mWindowData.backBuffer);
 		Input::Render(mWindowData.backBuffer);
 		SceneManager::Render(mWindowData.backBuffer);
+		Time::Render(mWindowData.backBuffer);
 
 		//이미지 화면에 출력해주는 함수
 		BitBlt(mWindowData.hdc, 0, 0, mWindowData.width, mWindowData.height, mWindowData.backBuffer, 0, 0, SRCCOPY);

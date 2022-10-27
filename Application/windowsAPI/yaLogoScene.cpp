@@ -4,6 +4,8 @@
 #include "yameteorManager.h"
 #include "yameteor.h"
 #include "yaPlayerBackGround.h"
+#include "yaSceneManager.h"
+#include "yaInput.h"
 namespace ya
 {
 	LogoScene::LogoScene()
@@ -14,21 +16,36 @@ namespace ya
 	}
 	void LogoScene::Initialize()
 	{
-		AddGameObject(new PlayerBackGround());
-		AddGameObject(new Player());
-		//for (int i = 0; i < 200; i++)
-		//{
-		//	meteor* Mmeteor = new meteor;
-		//	AddGameObject(Mmeteor);
-		//}
+		PlayerBackGround* bg = new PlayerBackGround;
+		bg->Initialize();
+		bg->SetImage(L"bg1", L"Logo.bmp");
+		AddGameObject(bg);
+
 	}
 	void LogoScene::Tick()
 	{
 		Scene::Tick();
+
+		if (KEY_DOWN(N))
+		{
+			SceneManager::ChangeScene(eSceneType::Title);
+		}
 	}
 	void LogoScene::Render(HDC hdc)
 	{
 		Scene::Render(hdc);
 
+		wchar_t szFloat[50] = {};
+
+		swprintf_s(szFloat, 50, L"LogoScene");
+		int steLen = wcsnlen_s(szFloat, 50);
+		TextOut(hdc, 10, 30, szFloat, steLen);
+
+	}
+	void LogoScene::Enter()
+	{
+	}
+	void LogoScene::Exit()
+	{
 	}
 }

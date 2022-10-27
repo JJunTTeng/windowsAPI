@@ -127,6 +127,12 @@
     <ClInclude Include="yaAnimator.h">
       <Filter>Endgine\Component</Filter>
     </ClInclude>
+    <ClInclude Include="yaEndScene.h">
+      <Filter>Endgine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="yaPlayScene.h">
+      <Filter>Endgine\Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="windowsAPI.rc">
@@ -207,6 +213,12 @@
     </ClCompile>
     <ClCompile Include="yaCollider.cpp">
       <Filter>Endgine\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="yaEndScene.cpp">
+      <Filter>Endgine\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="yaPlayScene.cpp">
+      <Filter>Endgine\Scene</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

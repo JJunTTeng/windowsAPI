@@ -34,6 +34,12 @@ namespace ya
 			mObjects[i]->Render(hdc);
 		}
 	}
+	void Scene::Enter()
+	{
+	}
+	void Scene::Exit()
+	{
+	}
 	void Scene::AddGameObject(GameObject* object)
 	{
 		if (object == nullptr)

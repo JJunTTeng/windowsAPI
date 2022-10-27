@@ -9,13 +9,13 @@ namespace ya
 	public:
 		PlayerBackGround();
 		~PlayerBackGround();
-
+		virtual void Initialize()override;
 		virtual void Tick()override;
 		virtual void Render(HDC hdc)override;
-		Image* GetBgImage() { return mimages; }
-		void SetBgImage(Image* Image) { mimages = Image; }
+		
+		void SetImage(const std::wstring& key, const std::wstring& name);
 	private:
 
-		Image* mimages;
+		Image* image;
 	};
 }

@@ -19,8 +19,8 @@ namespace ya
 
 		if (mImage == nullptr)
 		{
-			mImage = Resources::Load<Image>(L"mario", L"..\\Resources\\Images\\MiniIdle.bmp");
-			//	Resources<Image>::Load(L"mario", L"..\\Resources\\Images\\mario.bmp");
+			mImage = Resources::Load<Image>(L"mario", L"..\\Resources\\Images\\BigMario\\Idle.bmp");
+			//Resources<Image>::Load(L"mario", L"..\\Resources\\Images\\mario.bmp");
 		}
 
 		AddComponent(new Animator);
@@ -31,7 +31,7 @@ namespace ya
 	}
 	void Player::Tick()
 	{
-		//GameObject::Tick();
+		GameObject::Tick();
 		PlayerBackGround PBG;
 		Vector2 pos = GetPos();
 		if (KEY_PREESE(UP))
@@ -94,6 +94,7 @@ namespace ya
 
 		TransparentBlt(hdc, finalPos.x, finalPos.y,rect.x,rect.y,
 			mImage->GetDC(), 0, 0,mImage->GetWidth(), mImage->GetHeight(), 
-			RGB(255, 0, 255));
+			RGB(147, 187, 236));
+		GameObject::Render(hdc);
 	}
 }
