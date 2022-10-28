@@ -133,6 +133,12 @@
     <ClInclude Include="yaPlayScene.h">
       <Filter>Endgine\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="yaMonster.h">
+      <Filter>Endgine\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="yaCollisionManager.h">
+      <Filter>Endgine\Manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="windowsAPI.rc">
@@ -219,6 +225,12 @@
     </ClCompile>
     <ClCompile Include="yaPlayScene.cpp">
       <Filter>Endgine\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="yaMonster.cpp">
+      <Filter>Endgine\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="yaCollisionManager.cpp">
+      <Filter>Endgine\Manager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

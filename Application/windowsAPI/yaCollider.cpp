@@ -9,7 +9,7 @@ namespace ya
 		, mPos(Vector2::Zero)
 		, mScale(Vector2::one)
 	{
-		mScale = Vector2(25.0f, 25.0f);
+		mScale = Vector2(100.0f, 100.0f);
 	}
 	Collider::~Collider()
 	{
@@ -23,6 +23,7 @@ namespace ya
 	{
 		HPEN red = CreatePen(PS_SOLID, 1, RGB(255, 0, 0));
 		PEN pen(hdc, red);
+
 		HBRUSH tr = Application::GetInstance().GetBrush(eBushColor::Transparent);
 		BRUSH brush(hdc, tr);
 

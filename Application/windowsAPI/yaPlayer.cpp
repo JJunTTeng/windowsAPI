@@ -6,25 +6,28 @@
 #include "yaScene.h"
 #include "yaImage.h"
 #include "yaResources.h"
-#include "yaPlayerBackGround.h"
 #include "yaAnimator.h"
 #include "yaCollider.h"
 namespace ya
 {
 	Player::Player()
 		: mSpeed(0.01f)
+		, mImage(nullptr)
 	{
+
 		SetPos(Vector2{ 100,100 });
 		SetScales(Vector2{ 3.0f,3.0f });
 
 		if (mImage == nullptr)
 		{
+			//mImage = Resources::Load<Image>(L"mario", L"..\\Resources\\Images\\BigMario\\ClimbFront.bmp");
 			mImage = Resources::Load<Image>(L"mario", L"..\\Resources\\Images\\BigMario\\Idle.bmp");
+
 			//Resources<Image>::Load(L"mario", L"..\\Resources\\Images\\mario.bmp");
 		}
-
 		AddComponent(new Animator);
 		AddComponent(new Collider);
+
 	}
 	Player::~Player()
 	{
@@ -32,7 +35,6 @@ namespace ya
 	void Player::Tick()
 	{
 		GameObject::Tick();
-		PlayerBackGround PBG;
 		Vector2 pos = GetPos();
 		if (KEY_PREESE(UP))
 		{
@@ -57,7 +59,7 @@ namespace ya
 
 			Scene* playScene = SceneManager::GetPlayScene();
 
-			playScene->AddGameObject(missile);
+			playScene->AddGameObject(missile,eColliderLayer::Player_Projecttile);
 			missile->SetPos(GetPos());
 
 			missile->SetPos(Vector2(GetPos().x + (mImage->GetWidth()), GetPos().y + (mImage->GetHeight() / 2) - missile->GetScale().y / 2));
@@ -92,9 +94,13 @@ namespace ya
 		rect.x = mImage->GetWidth() * Scale.x;
 		rect.y = mImage->GetHeight() * Scale.y;
 
-		TransparentBlt(hdc, finalPos.x, finalPos.y,rect.x,rect.y,
+		//TransparentBlt(hdc, finalPos.x, finalPos.y,rect.x,rect.y,
+		//	mImage->GetDC(), 0, 0,mImage->GetWidth(), mImage->GetHeight(), 
+		//	RGB(0, 116, 116));
+
+				TransparentBlt(hdc, finalPos.x, finalPos.y,rect.x,rect.y,
 			mImage->GetDC(), 0, 0,mImage->GetWidth(), mImage->GetHeight(), 
-			RGB(147, 187, 236));
+			RGB(147, 187,236));
 		GameObject::Render(hdc);
 	}
 }

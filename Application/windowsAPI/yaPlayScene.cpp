@@ -4,6 +4,8 @@
 #include "yaSceneManager.h"
 #include "yaImage.h"
 #include "yaPlayerBackGround.h"
+#include "yaMonster.h"
+#include "yaCollisionManager.h"
 namespace ya
 {
 	PlayScene::PlayScene()
@@ -15,12 +17,18 @@ namespace ya
 	void PlayScene::Initialize()
 	{
 		PlayerBackGround* mbg = new PlayerBackGround;
+		PlayerBackGround* mb = new PlayerBackGround;
 
-		AddGameObject(mbg);
+		AddGameObject(mbg, eColliderLayer::BackGround);
+		AddGameObject(mb, eColliderLayer::BackGround);
 
-		mbg->SetImage(L"1-1", L"11.bmp");
-		AddGameObject(new Player);
+		mbg->SetImage(L"1-11", L"11.bmp");
+		mb->SetImage(L"1-1", L"1-1.bmp");
+		AddGameObject(new Player, eColliderLayer::Player);
+		AddGameObject(new Monster, eColliderLayer::Monster);
 
+
+		CollisionManager::SetLayar(eColliderLayer::Player, eColliderLayer::Monster, true);
 	}
 	void PlayScene::Tick()
 	{

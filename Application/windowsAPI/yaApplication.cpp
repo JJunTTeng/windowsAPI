@@ -3,6 +3,7 @@
 #include "yaTime.h"
 #include "yaInput.h"
 #include "yaResources.h"
+#include "yaCollisionManager.h"
 
 namespace ya
 {
@@ -23,14 +24,18 @@ namespace ya
 		Time::Tick();
 		Input::Tick();
 
-		//clear
-		BRUSH brush(mWindowData.backBuffer, mBrush[(UINT)eBushColor::Gray]);
-
-		Rectangle(mWindowData.backBuffer, -1, -1, mWindowData.width+1, mWindowData.height+1);
 		SceneManager::Tick();
 
-		Input::Render(mWindowData.backBuffer);
+		CollisionManager::Tick();
+
+
+		//clear
+		BRUSH brush(mWindowData.backBuffer, mBrush[(UINT)eBushColor::Gray]);
+		Rectangle(mWindowData.backBuffer, -1, -1, mWindowData.width+1, mWindowData.height+1);
+
+
 		SceneManager::Render(mWindowData.backBuffer);
+		Input::Render(mWindowData.backBuffer);
 		Time::Render(mWindowData.backBuffer);
 
 		//이미지 화면에 출력해주는 함수

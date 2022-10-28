@@ -18,9 +18,11 @@ namespace ya
 		virtual void Enter(); //내씬으로 변경 됬을때마다
 		virtual void Exit();
 
-		void AddGameObject(GameObject* object);
-
+		void AddGameObject(GameObject* object , eColliderLayer type);
+		std::vector<GameObject*>& GetGameObjects(eColliderLayer type) { return mObjects[(UINT)type]; }
 	private:
-		std::vector<GameObject*> mObjects;
+		std::vector<std::vector<GameObject*>> mObjects;
 	};
+
+	typedef std::vector<GameObject*> LayerObjects;
 }

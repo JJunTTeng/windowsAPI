@@ -24,6 +24,21 @@ namespace ya
 
 		void AddComponent(Component* component);
 
+		template <typename T>
+		__forceinline T* GetComponent()
+ 		{
+			T* prev;
+			for (Component* component : mComponents)
+			{
+				prev = dynamic_cast<T*>(component);
+				
+				if (prev != nullptr)
+					return prev;
+			}
+
+			return nullptr;
+		}
+
 	private:
 		std::vector<Component*> mComponents;
 		Vector2 mPos;
