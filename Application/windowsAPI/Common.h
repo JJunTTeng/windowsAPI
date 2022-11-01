@@ -44,12 +44,19 @@ struct PEN
 	HPEN oldPen;
 	HDC mHDC;
 
+	PEN(HDC hdc)
+		:mHDC(hdc),
+		mPen(NULL),
+		oldPen(NULL)
+	{
+	}
+
 	PEN(HDC hdc, HPEN pen)
 		:mHDC(hdc),
 		mPen(pen),
 		oldPen(NULL)
 	{		
-		oldPen = (HPEN)SelectObject(hdc, pen);
+		oldPen = (HPEN)SelectObject(mHDC, pen);
 	}
 	~PEN()
 	{
@@ -57,6 +64,10 @@ struct PEN
 		DeleteObject(mPen);
 	}
 
+	void SetPen(HPEN pen)
+	{
+		oldPen = (HPEN)SelectObject(mHDC, pen);
+	}
 };
 
 struct BRUSH

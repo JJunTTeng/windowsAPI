@@ -19,7 +19,7 @@ namespace ya
 		PlayerBackGround* bg = new PlayerBackGround;
 		bg->Initialize();
 		bg->SetImage(L"bg2", L"Logo.bmp");
-		AddGameObject(bg);
+		AddGameObject(bg, eColliderLayer::BackGround);
 
 	}
 	void TitleScene::Tick()

@@ -34,9 +34,13 @@ namespace ya
 		rect.x = image->GetWidth() * Scale.x;
 		rect.y = image->GetHeight() * Scale.y;
 
+		//TransparentBlt(hdc, 0, 0, rect.x, rect.y,
+		//	image->GetDC(), 0, 0, image->GetWidth(), image->GetHeight(),
+		//	RGB(147, 187, 236));
+
 		TransparentBlt(hdc, 0, 0, rect.x, rect.y,
 			image->GetDC(), 0, 0, image->GetWidth(), image->GetHeight(),
-			RGB(147, 187, 236));
+			RGB(248, 0, 248));
 
 		GameObject::Render(hdc);
 

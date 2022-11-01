@@ -41,6 +41,15 @@ namespace ya
 			component->Render(hdc);
 		}
 	}
+	void GameObject::OnCollisionEnter(Collider* other)
+	{
+	}
+	void GameObject::OnCollisionStay(Collider* other)
+	{
+	}
+	void GameObject::OnCollisionExit(Collider* other)
+	{
+	}
 	void GameObject::AddComponent(Component* component)
 	{
 		if(component == nullptr)

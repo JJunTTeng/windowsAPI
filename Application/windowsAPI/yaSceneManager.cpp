@@ -28,7 +28,7 @@ namespace ya
 
 
 
-		ChangeScene(eSceneType::Logo);
+		ChangeScene(eSceneType::Play);
 		//업캐스팅
 		//다운캐스팅
 
@@ -58,7 +58,7 @@ namespace ya
 	{
 		if (mPlayScene == nullptr)
 		{
-			mPlayScene = mScenes[(UINT)eSceneType::Logo];
+			mPlayScene = mScenes[(UINT)eSceneType::Play];
 		}
 
 		else
