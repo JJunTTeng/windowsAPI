@@ -6,8 +6,11 @@
 namespace ya
 {
 	WORD CollisionManager::mMatrix[_COLLIDER_LAYER] = {};
+<<<<<<< HEAD
 	std::map<UINT64, bool> CollisionManager::mCollisionInformation;
 
+=======
+>>>>>>> c1499e9a8f2a88c34360ca32ac75768ed0bcab38
 	void CollisionManager::Tick()
 	{
 		Scene* playScene = SceneManager::GetPlayScene();
@@ -60,22 +63,31 @@ namespace ya
 		//auto를 쓰는 이유 iterator 이 너무 기니까 
 		for (auto leftObject : lefts)
 		{
+<<<<<<< HEAD
 			Collider* leftColider = leftObject->GetComponent<Collider>();
 			if (leftColider == nullptr)
+=======
+			if (leftObject->GetComponent<Collider>() == nullptr)
+>>>>>>> c1499e9a8f2a88c34360ca32ac75768ed0bcab38
 				continue;
 
 			for (auto rightObject : rights)
 			{
+<<<<<<< HEAD
 
 				Collider* rightColider = rightObject->GetComponent<Collider>();
 
 
 				if (rightColider == nullptr)
+=======
+				if (rightObject->GetComponent<Collider>() == nullptr)
+>>>>>>> c1499e9a8f2a88c34360ca32ac75768ed0bcab38
 					continue;
 
 				if (leftObject == rightObject)
 					continue;
 
+<<<<<<< HEAD
 				ColliderCollision(leftColider, rightColider);
 
 			}
@@ -139,6 +151,20 @@ namespace ya
 		}
 
 	}
+=======
+				if (Intersect(leftObject->GetComponent<Collider>(), rightObject->GetComponent<Collider>()))
+				{
+					//충돌
+					int a = 0;
+				}
+				else
+				{
+					//충돌 x
+				}
+			}
+		}
+	}
+>>>>>>> c1499e9a8f2a88c34360ca32ac75768ed0bcab38
 	bool CollisionManager::Intersect(Collider* left, Collider* right)
 	{
 		Vector2 leftPos = left->GetPos();

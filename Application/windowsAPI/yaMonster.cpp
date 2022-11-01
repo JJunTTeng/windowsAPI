@@ -13,7 +13,10 @@ namespace ya
 	Monster::Monster()
 		: mSpeed(0.01f)
 	{
+<<<<<<< HEAD
 		SetName(L"Monster");
+=======
+>>>>>>> c1499e9a8f2a88c34360ca32ac75768ed0bcab38
 		SetPos(Vector2{ 500,100 });
 		SetScales(Vector2{ 3.0f,3.0f });
 
@@ -73,6 +76,7 @@ namespace ya
 		RGB(147, 187,236));
 		GameObject::Render(hdc);
 	}
+<<<<<<< HEAD
 	void Monster::OnCollisionEnter(Collider* other)
 	{
 	}
@@ -82,4 +86,6 @@ namespace ya
 	void Monster::OnCollisionExit(Collider* other)
 	{
 	}
+=======
+>>>>>>> c1499e9a8f2a88c34360ca32ac75768ed0bcab38
 }

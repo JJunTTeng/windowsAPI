@@ -14,7 +14,11 @@ namespace ya
 		: mSpeed(0.01f)
 		, mImage(nullptr)
 	{
+<<<<<<< HEAD
 		SetName(L"Player");
+=======
+
+>>>>>>> c1499e9a8f2a88c34360ca32ac75768ed0bcab38
 		SetPos(Vector2{ 100,100 });
 		SetScales(Vector2{ 3.0f,3.0f });
 
@@ -60,6 +64,10 @@ namespace ya
 			Scene* playScene = SceneManager::GetPlayScene();
 
 			playScene->AddGameObject(missile,eColliderLayer::Player_Projecttile);
+<<<<<<< HEAD
+=======
+			missile->SetPos(GetPos());
+>>>>>>> c1499e9a8f2a88c34360ca32ac75768ed0bcab38
 
 			missile->SetPos(GetPos());
 			missile->SetPos(Vector2(GetPos().x + (mImage->GetWidth()), GetPos().y + (mImage->GetHeight() / 2) - missile->GetScale().y / 2));

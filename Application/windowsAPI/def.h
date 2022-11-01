@@ -54,6 +54,7 @@ enum class eColliderLayer
 	End = _COLLIDER_LAYER
 };
 
+<<<<<<< HEAD
 //union ex) 내가 자료형 int를 선언하고 char 자료형 변수 4개를 선언했다 그러면 int (4byte) 자료형 안에 char (1byte) 자료형 변수 4개를 가치 공유하면서 쓰겠다 쉽게말해서 배열처럼 한꺼번에 또는 나눠 쓰겠다
 union ColliderID
 {
@@ -65,3 +66,5 @@ union ColliderID
 	UINT64 ID;
 };
 
+=======
+>>>>>>> c1499e9a8f2a88c34360ca32ac75768ed0bcab38

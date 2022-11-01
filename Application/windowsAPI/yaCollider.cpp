@@ -22,6 +22,12 @@ namespace ya
 	}
 	void Collider::Render(HDC hdc)
 	{
+<<<<<<< HEAD
+=======
+		HPEN red = CreatePen(PS_SOLID, 1, RGB(255, 0, 0));
+		PEN pen(hdc, red);
+
+>>>>>>> c1499e9a8f2a88c34360ca32ac75768ed0bcab38
 		HBRUSH tr = Application::GetInstance().GetBrush(eBushColor::Transparent);
 		BRUSH brush(hdc, tr);
 

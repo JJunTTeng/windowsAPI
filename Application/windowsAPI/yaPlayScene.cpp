@@ -26,11 +26,16 @@ namespace ya
 		mb->SetImage(L"1-1", L"1-1.bmp");
 		AddGameObject(new Player, eColliderLayer::Player);
 		AddGameObject(new Monster, eColliderLayer::Monster);
+<<<<<<< HEAD
 
 
 		CollisionManager::SetLayar(eColliderLayer::Player, eColliderLayer::Monster, true);
 		CollisionManager::SetLayar(eColliderLayer::Player_Projecttile, eColliderLayer::Monster, true);
+=======
+>>>>>>> c1499e9a8f2a88c34360ca32ac75768ed0bcab38
 
+
+		CollisionManager::SetLayar(eColliderLayer::Player, eColliderLayer::Monster, true);
 	}
 	void PlayScene::Tick()
 	{
