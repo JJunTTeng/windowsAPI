@@ -8,17 +8,15 @@
 #include "yaResources.h"
 #include "yaAnimator.h"
 #include "yaCollider.h"
+#include "yaCamera.h"
 namespace ya
 {
 	Player::Player()
 		: mSpeed(0.01f)
 		, mImage(nullptr)
 	{
-<<<<<<< HEAD
 		SetName(L"Player");
-=======
 
->>>>>>> c1499e9a8f2a88c34360ca32ac75768ed0bcab38
 		SetPos(Vector2{ 100,100 });
 		SetScales(Vector2{ 3.0f,3.0f });
 
@@ -32,6 +30,8 @@ namespace ya
 		AddComponent(new Animator);
 		AddComponent(new Collider);
 
+		
+		Camera::SetTarget(this);
 	}
 	Player::~Player()
 	{
@@ -40,22 +40,23 @@ namespace ya
 	{
 		GameObject::Tick();
 		Vector2 pos = GetPos();
+		//pos = Camera::CalculatePos(pos);
 		if (KEY_PREESE(UP))
 		{
-			pos.y -= 100.0f * Time::DeltaTime();
+			pos.y -= 300.0f * Time::DeltaTime();
 			
 		}
 		if (KEY_PREESE(DOWN))
 		{
-			pos.y += 100.0f * Time::DeltaTime();
+			pos.y += 300.0f * Time::DeltaTime();
 		}
 		if (KEY_PREESE(LEFT))
 		{
-			pos.x -= 100.0f * Time::DeltaTime();
+			pos.x -= 300.0f * Time::DeltaTime();
 		}
 		if (KEY_PREESE(RIGHT))
 		{
-			pos.x += 100.0f * Time::DeltaTime();
+			pos.x += 300.0f * Time::DeltaTime();
 		}
 		if (KEY_DOWN(A))
 		{
@@ -64,10 +65,8 @@ namespace ya
 			Scene* playScene = SceneManager::GetPlayScene();
 
 			playScene->AddGameObject(missile,eColliderLayer::Player_Projecttile);
-<<<<<<< HEAD
-=======
 			missile->SetPos(GetPos());
->>>>>>> c1499e9a8f2a88c34360ca32ac75768ed0bcab38
+
 
 			missile->SetPos(GetPos());
 			missile->SetPos(Vector2(GetPos().x + (mImage->GetWidth()), GetPos().y + (mImage->GetHeight() / 2) - missile->GetScale().y / 2));
@@ -78,7 +77,7 @@ namespace ya
 	}
 	void Player::Render(HDC hdc)
 	{
-		Vector2 pos = GetPos();
+		Vector2 pos = Camera::CalculatePos(GetPos());
 		Vector2 Scale = GetScale();
 
 		HPEN mPen = CreatePen(PS_SOLID, 1, RGB(51, 0, 153));

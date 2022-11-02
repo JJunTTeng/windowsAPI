@@ -1,6 +1,7 @@
 #include "yaPlayerBackGround.h"
 #include "yaResources.h"
 #include "yaImage.h"
+#include "yaCamera.h"
 namespace ya
 {
 	PlayerBackGround::PlayerBackGround()
@@ -26,22 +27,32 @@ namespace ya
 		Vector2 pos = GetPos();
 		Vector2 Scale = GetScale();
 
-		Vector2 finalPos;
-		finalPos.x = (pos.x - image->GetWidth() * (Scale.x / 2.0f));
-		finalPos.y = (pos.y - image->GetHeight() * (Scale.y / 2.0f));
+		//Vector2 finalPos;
+		//finalPos.x = (pos.x - image->GetWidth() * (Scale.x / 2.0f));
+		//finalPos.y = (pos.y - image->GetHeight() * (Scale.y / 2.0f));
 
 		Vector2 rect;
 		rect.x = image->GetWidth() * Scale.x;
 		rect.y = image->GetHeight() * Scale.y;
 
+	//	finalPos = Camera::CalculatePos(finalPos);
 		//TransparentBlt(hdc, 0, 0, rect.x, rect.y,
 		//	image->GetDC(), 0, 0, image->GetWidth(), image->GetHeight(),
 		//	RGB(147, 187, 236));
 
-		TransparentBlt(hdc, 0, 0, rect.x, rect.y,
+		Vector2 finalPos = Vector2::Zero;
+	/*	finalPos.x = image->GetWidth() * (Scale.x / 2.0f);
+		finalPos.y = image->GetHeight() * (Scale.y / 2.0f);*/
+
+		finalPos = Camera::CalculatePos(finalPos);
+
+		TransparentBlt(hdc, finalPos.x, finalPos.y, rect.x  , rect.y ,
 			image->GetDC(), 0, 0, image->GetWidth(), image->GetHeight(),
 			RGB(248, 0, 248));
 
+		//TransparentBlt(hdc, finalPos.x, finalPos.y, rect.x, rect.y,
+		//	mImage->GetDC(), 0, 0, mImage->GetWidth(), mImage->GetHeight(),
+		//	RGB(147, 187, 236));
 		GameObject::Render(hdc);
 
 

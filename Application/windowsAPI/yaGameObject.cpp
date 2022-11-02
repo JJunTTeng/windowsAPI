@@ -13,6 +13,8 @@ namespace ya
 			if (component == nullptr)
 				continue;
 
+
+
 			delete component;
 			component = nullptr;
 		}
@@ -27,6 +29,9 @@ namespace ya
 		{
 			if (component == nullptr)
 				continue;
+
+
+
 			component->Tick();
 		}
 	}
@@ -37,6 +42,7 @@ namespace ya
 		{
 			if (component == nullptr)
 				continue;
+
 
 			component->Render(hdc);
 		}

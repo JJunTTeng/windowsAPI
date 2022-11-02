@@ -16,23 +16,20 @@ namespace ya
 	}
 	void PlayScene::Initialize()
 	{
-		PlayerBackGround* mbg = new PlayerBackGround;
+//		PlayerBackGround* mbg = new PlayerBackGround;
 		PlayerBackGround* mb = new PlayerBackGround;
 
-		AddGameObject(mbg, eColliderLayer::BackGround);
+//		AddGameObject(mbg, eColliderLayer::BackGround);
 		AddGameObject(mb, eColliderLayer::BackGround);
 
-		mbg->SetImage(L"1-11", L"11.bmp");
+//		mbg->SetImage(L"1-11", L"11.bmp");
 		mb->SetImage(L"1-1", L"1-1.bmp");
 		AddGameObject(new Player, eColliderLayer::Player);
 		AddGameObject(new Monster, eColliderLayer::Monster);
-<<<<<<< HEAD
 
 
 		CollisionManager::SetLayar(eColliderLayer::Player, eColliderLayer::Monster, true);
 		CollisionManager::SetLayar(eColliderLayer::Player_Projecttile, eColliderLayer::Monster, true);
-=======
->>>>>>> c1499e9a8f2a88c34360ca32ac75768ed0bcab38
 
 
 		CollisionManager::SetLayar(eColliderLayer::Player, eColliderLayer::Monster, true);

@@ -2,6 +2,7 @@
 #include "yaTime.h"
 #include "yaCollider.h"
 #include "yaGameObject.h"
+#include "yaCamera.h"
 
 namespace ya
 {
@@ -33,6 +34,7 @@ namespace ya
 	{
 		Vector2 Pos = GetPos();
 		Vector2 Scale = GetScale();
+		Pos = Camera::CalculatePos(Pos);
 
 		Ellipse(hdc, Pos.x, Pos.y , Pos.x + +Scale.x, Pos.y + Scale.y);
 

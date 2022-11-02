@@ -4,8 +4,6 @@ namespace ya
 {
 	class Time
 	{
-
-
 	public:
 		static void Initialize();
 		static void Tick();
@@ -19,6 +17,8 @@ namespace ya
 		static LARGE_INTEGER mCurFrequency;
 
 		static float mDeltaTime;
+		static float mTime;
+
 	};
 }
 

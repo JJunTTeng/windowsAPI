@@ -6,11 +6,8 @@
 namespace ya
 {
 	WORD CollisionManager::mMatrix[_COLLIDER_LAYER] = {};
-<<<<<<< HEAD
 	std::map<UINT64, bool> CollisionManager::mCollisionInformation;
 
-=======
->>>>>>> c1499e9a8f2a88c34360ca32ac75768ed0bcab38
 	void CollisionManager::Tick()
 	{
 		Scene* playScene = SceneManager::GetPlayScene();
@@ -19,7 +16,7 @@ namespace ya
 		{
 			for (size_t col = 0; col < _COLLIDER_LAYER; col++)
 			{
-				if (mMatrix[row] & (1 << col)) 
+				if (mMatrix[row] & (1 << col))
 				{
 					//충돌 이 되었는지 안되었는지를 검사해줘야 함.
 					LayerCollision(playScene, (eColliderLayer)row, (eColliderLayer)col);
@@ -27,7 +24,7 @@ namespace ya
 			}
 		}
 	}
-	void CollisionManager::SetLayar(eColliderLayer left, eColliderLayer right , bool value)
+	void CollisionManager::SetLayar(eColliderLayer left, eColliderLayer right, bool value)
 	{
 		//더 작은 숫자를 행으로 더 큰숫자를 열로
 		UINT row = 0;	//행
@@ -52,7 +49,7 @@ namespace ya
 		else
 			mMatrix[row] &= ~(1 << col);
 
-		
+
 	}
 	void CollisionManager::LayerCollision(Scene* scene, eColliderLayer left, eColliderLayer right)
 	{
@@ -63,31 +60,24 @@ namespace ya
 		//auto를 쓰는 이유 iterator 이 너무 기니까 
 		for (auto leftObject : lefts)
 		{
-<<<<<<< HEAD
 			Collider* leftColider = leftObject->GetComponent<Collider>();
 			if (leftColider == nullptr)
-=======
-			if (leftObject->GetComponent<Collider>() == nullptr)
->>>>>>> c1499e9a8f2a88c34360ca32ac75768ed0bcab38
-				continue;
+				if (leftObject->GetComponent<Collider>() == nullptr)
+					continue;
 
 			for (auto rightObject : rights)
 			{
-<<<<<<< HEAD
 
 				Collider* rightColider = rightObject->GetComponent<Collider>();
 
 
 				if (rightColider == nullptr)
-=======
-				if (rightObject->GetComponent<Collider>() == nullptr)
->>>>>>> c1499e9a8f2a88c34360ca32ac75768ed0bcab38
-					continue;
+					if (rightObject->GetComponent<Collider>() == nullptr)
+						continue;
 
 				if (leftObject == rightObject)
 					continue;
 
-<<<<<<< HEAD
 				ColliderCollision(leftColider, rightColider);
 
 			}
@@ -112,10 +102,13 @@ namespace ya
 		if (Intersect(left, right))
 		{
 			//충돌했을때 이제 충돌을 시작했나? 아니면 충돌이 계속 진행 중이였나 조건문
+			
+			
+
 			if (iter->second == false)
 			{
 				//충돌을 시작했다
-				
+
 				//충돌함수 호출
 				left->OnCollisionEnter(right);
 				right->OnCollisionEnter(left);
@@ -149,24 +142,15 @@ namespace ya
 				iter->second = false;
 			}
 		}
+	}
 
-	}
-=======
-				if (Intersect(leftObject->GetComponent<Collider>(), rightObject->GetComponent<Collider>()))
-				{
-					//충돌
-					int a = 0;
-				}
-				else
-				{
-					//충돌 x
-				}
-			}
-		}
-	}
->>>>>>> c1499e9a8f2a88c34360ca32ac75768ed0bcab38
+
 	bool CollisionManager::Intersect(Collider* left, Collider* right)
 	{
+		if (left->GetOwner()->IsDeath() || right->GetOwner()->IsDeath())
+			return false;
+
+
 		Vector2 leftPos = left->GetPos();
 		Vector2 rightPos = right->GetPos();
 

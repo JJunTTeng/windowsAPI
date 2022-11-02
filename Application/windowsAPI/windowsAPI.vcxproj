@@ -131,6 +131,7 @@
     <ClInclude Include="def.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="yaAnimator.h" />
+    <ClInclude Include="yaCamera.h" />
     <ClInclude Include="yaCollider.h" />
     <ClInclude Include="yaCollisionManager.h" />
     <ClInclude Include="yaComponent.h" />
@@ -162,6 +163,7 @@
   <ItemGroup>
     <ClCompile Include="Maths.cpp" />
     <ClCompile Include="yaAnimator.cpp" />
+    <ClCompile Include="yaCamera.cpp" />
     <ClCompile Include="yaCollider.cpp" />
     <ClCompile Include="yaCollisionManager.cpp" />
     <ClCompile Include="yaComponent.cpp" />

@@ -36,7 +36,7 @@ namespace ya
 
 			for (size_t x = 0; x < mObjects[y].size(); x++)
 			{
-<<<<<<< HEAD
+
 				if (mObjects[y][x] == nullptr)
 					continue;
 
@@ -45,10 +45,8 @@ namespace ya
 
 				mObjects[y][x]->Tick();
 				
-=======
-				if (mObjects[y][x] != nullptr)
-				mObjects[y][x]->Tick();
->>>>>>> c1499e9a8f2a88c34360ca32ac75768ed0bcab38
+
+
 			}
 		}
 	}
@@ -59,7 +57,6 @@ namespace ya
 
 			for (size_t x = 0; x < mObjects[y].size(); x++)
 			{
-<<<<<<< HEAD
 				if (mObjects[y][x] == nullptr)
 					continue;
 				if (mObjects[y][x]->IsDeath())
@@ -67,11 +64,6 @@ namespace ya
 
 
 				mObjects[y][x]->Render(hdc);
-				
-=======
-				if (mObjects[y][x] != nullptr)
-				mObjects[y][x]->Render(hdc);
->>>>>>> c1499e9a8f2a88c34360ca32ac75768ed0bcab38
 			}
 		}
 	}

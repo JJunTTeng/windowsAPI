@@ -1,6 +1,7 @@
 #include "yaCollider.h"
 #include "yaGameObject.h"
 #include "yaApplication.h"
+#include "yaCamera.h"
 namespace ya
 {
 	Collider::Collider()
@@ -18,21 +19,18 @@ namespace ya
 	void Collider::Tick()
 	{
 		GameObject* owner = GetOwner();
+
 		mPos = owner->GetPos() + mOffset;
 	}
 	void Collider::Render(HDC hdc)
 	{
-<<<<<<< HEAD
-=======
 		HPEN red = CreatePen(PS_SOLID, 1, RGB(255, 0, 0));
 		PEN pen(hdc, red);
 
->>>>>>> c1499e9a8f2a88c34360ca32ac75768ed0bcab38
 		HBRUSH tr = Application::GetInstance().GetBrush(eBushColor::Transparent);
 		BRUSH brush(hdc, tr);
 
 		HPEN green = CreatePen(PS_SOLID, 1, RGB(0,255, 0));
-		HPEN red = CreatePen(PS_SOLID, 1, RGB(255, 0, 0));
 		HPEN oldPen;
 
 		if (mCollisionCount > 0)
@@ -40,6 +38,7 @@ namespace ya
 		else
 			oldPen = (HPEN)SelectObject(hdc, green);
 
+		mPos = Camera::CalculatePos(mPos);
 		Rectangle(hdc, mPos.x - mScale.x / 2, mPos.y - mScale.y / 2, mPos.x + mScale.x / 2, mPos.y + mScale.y / 2);
 
 		SelectObject(hdc, oldPen);

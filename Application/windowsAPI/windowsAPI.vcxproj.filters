@@ -118,9 +118,6 @@
     <ClInclude Include="yaPlayerBackGround.h">
       <Filter>Endgine\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="yaComponent.h">
-      <Filter>Endgine\Component\Base</Filter>
-    </ClInclude>
     <ClInclude Include="yaCollider.h">
       <Filter>Endgine\Component</Filter>
     </ClInclude>
@@ -137,6 +134,12 @@
       <Filter>Endgine\GameObject</Filter>
     </ClInclude>
     <ClInclude Include="yaCollisionManager.h">
+      <Filter>Endgine\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="yaComponent.h">
+      <Filter>Endgine\Component\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="yaCamera.h">
       <Filter>Endgine\Manager</Filter>
     </ClInclude>
   </ItemGroup>
@@ -230,6 +233,9 @@
       <Filter>Endgine\GameObject</Filter>
     </ClCompile>
     <ClCompile Include="yaCollisionManager.cpp">
+      <Filter>Endgine\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="yaCamera.cpp">
       <Filter>Endgine\Manager</Filter>
     </ClCompile>
   </ItemGroup>

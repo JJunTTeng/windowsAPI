@@ -1,4 +1,5 @@
 #include "yaTime.h"
+#include "yaApplication.h"
 namespace ya
 {
 
@@ -6,6 +7,7 @@ namespace ya
 	 LARGE_INTEGER  Time::mPrevFrequency;
 	 LARGE_INTEGER  Time::mCurFrequency;
 	 float Time::mDeltaTime = 0.0f;
+	 float Time::mTime = 0.0f;
 
 	void Time::Initialize()
 	{
@@ -29,12 +31,22 @@ namespace ya
 	}
 	void Time::Render(HDC hdc)
 	{
-		wchar_t szFloat[50] = {};
+		mTime += Time::DeltaTime();
 
-		float fps = 1.0f / mDeltaTime;
+		if (mTime > 1.0f)
+		{
+			wchar_t szFloat[50] = {};
 
-		swprintf_s(szFloat, 50, L"DeltaTime : %f", fps);
-		int steLen = wcsnlen_s(szFloat, 50);
-		TextOut(hdc, 10, 10, szFloat, steLen);
+			float fps = 1.0f / mDeltaTime;
+
+			swprintf_s(szFloat, 50, L"DeltaTime : %f", fps);
+			//int stdLen = wcsnlen_s(szFloat, 50);
+
+		//	TextOut(hdc, 10, 10, szFloat, steLen);
+			HWND hWnd = Application::GetInstance().GetWindowData().hWnd;
+
+			SetWindowText(hWnd, szFloat);
+			mTime = 0.0f;
+		}
 	}
 }

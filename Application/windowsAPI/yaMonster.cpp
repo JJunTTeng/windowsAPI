@@ -8,15 +8,14 @@
 #include "yaResources.h"
 #include "yaAnimator.h"
 #include "yaCollider.h"
+#include "yaCamera.h"
 namespace ya
 {
 	Monster::Monster()
 		: mSpeed(0.01f)
 	{
-<<<<<<< HEAD
 		SetName(L"Monster");
-=======
->>>>>>> c1499e9a8f2a88c34360ca32ac75768ed0bcab38
+
 		SetPos(Vector2{ 500,100 });
 		SetScales(Vector2{ 3.0f,3.0f });
 
@@ -46,19 +45,6 @@ namespace ya
 		Vector2 pos = GetPos();
 		Vector2 Scale = GetScale();
 
-		HPEN mPen = CreatePen(PS_SOLID, 1, RGB(51, 0, 153));
-		PEN pen(hdc, mPen);
-
-		HBRUSH mBrush = CreateSolidBrush(RGB(153, 102, 204));
-		BRUSH brush(hdc, mBrush);
-
-		//Rectangle(hdc, pos.x, pos.y, pos.x + Scale.x, pos.y + Scale.y);
-
-
-
-		//크기변경 x
-		//BitBlt(hdc, pos.x, pos.y, mImage->GetWidth(), mImage->GetHeight(), mImage->GetDC(), 0, 0, SRCCOPY);
-
 		Vector2 finalPos;
 		finalPos.x = (pos.x - mImage->GetWidth() * (Scale.x / 2.0f));
 		finalPos.y = (pos.y - mImage->GetHeight() * (Scale.y / 2.0f));
@@ -66,6 +52,8 @@ namespace ya
 		Vector2 rect;
 		rect.x = mImage->GetWidth() * Scale.x;
 		rect.y = mImage->GetHeight() * Scale.y;
+
+		finalPos = Camera::CalculatePos(finalPos);
 
 		/*TransparentBlt(hdc, finalPos.x, finalPos.y, rect.x, rect.y,
 			mImage->GetDC(), 0, 0, mImage->GetWidth(), mImage->GetHeight(),
@@ -76,7 +64,7 @@ namespace ya
 		RGB(147, 187,236));
 		GameObject::Render(hdc);
 	}
-<<<<<<< HEAD
+
 	void Monster::OnCollisionEnter(Collider* other)
 	{
 	}
@@ -86,6 +74,5 @@ namespace ya
 	void Monster::OnCollisionExit(Collider* other)
 	{
 	}
-=======
->>>>>>> c1499e9a8f2a88c34360ca32ac75768ed0bcab38
+
 }
