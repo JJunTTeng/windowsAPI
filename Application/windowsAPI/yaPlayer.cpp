@@ -17,7 +17,7 @@ namespace ya
 	{
 		SetName(L"Player");
 
-		SetPos(Vector2{ 100,100 });
+		SetPos(Vector2{ 100,700 });
 		SetScales(Vector2{ 3.0f,3.0f });
 
 		if (mImage == nullptr)

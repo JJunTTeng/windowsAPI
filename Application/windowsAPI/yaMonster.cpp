@@ -16,7 +16,7 @@ namespace ya
 	{
 		SetName(L"Monster");
 
-		SetPos(Vector2{ 500,100 });
+		SetPos(Vector2{ 100,100 });
 		SetScales(Vector2{ 3.0f,3.0f });
 
 		if (mImage == nullptr)
@@ -30,6 +30,26 @@ namespace ya
 		AddComponent(new Animator);
 		AddComponent(new Collider);
 	}
+	Monster::Monster(Vector2 position)
+		: mSpeed(0.01f)
+	{
+		SetName(L"Monster");
+
+		SetPos(position);
+		SetScales(Vector2{ 3.0f,3.0f });
+
+		if (mImage == nullptr)
+		{
+			//mImage = Resources::Load<Image>(L"mario", L"..\\Resources\\Images\\BigMario\\ClimbFront.bmp");
+			mImage = Resources::Load<Image>(L"firemario", L"..\\Resources\\Images\\FireMario\\Idle.bmp");
+
+			//Resources<Image>::Load(L"mario", L"..\\Resources\\Images\\mario.bmp");
+		}
+
+		AddComponent(new Animator);
+		AddComponent(new Collider);
+	}
+
 	Monster::~Monster()
 	{
 	}

@@ -144,7 +144,6 @@ namespace ya
 		}
 	}
 
-
 	bool CollisionManager::Intersect(Collider* left, Collider* right)
 	{
 		if (left->GetOwner()->IsDeath() || right->GetOwner()->IsDeath())

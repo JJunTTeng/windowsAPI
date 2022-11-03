@@ -10,6 +10,15 @@ namespace ya
 	public:
 
 		typedef std::map<std::wstring, Resource*>::iterator ResourceIter;		//왼쪽 자료형을 오른쪽으로 바꿔주겠다
+
+		template <typename T>
+		static void insert(const std::wstring& key, T* resource)
+		{
+			if (resource == nullptr || key == L"")
+				return;
+
+			mResources.insert(std::make_pair(key, resource));
+		}
 		template <typename T>
 		static T* Find(const std::wstring& key)
 		{

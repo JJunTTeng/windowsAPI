@@ -6,6 +6,7 @@
 #include "yaPlayerBackGround.h"
 #include "yaMonster.h"
 #include "yaCollisionManager.h"
+#include "yaObject.h"
 namespace ya
 {
 	PlayScene::PlayScene()
@@ -16,23 +17,24 @@ namespace ya
 	}
 	void PlayScene::Initialize()
 	{
-//		PlayerBackGround* mbg = new PlayerBackGround;
+		PlayerBackGround* mbg = new PlayerBackGround;
 		PlayerBackGround* mb = new PlayerBackGround;
 
-//		AddGameObject(mbg, eColliderLayer::BackGround);
+		AddGameObject(mbg, eColliderLayer::BackGround);
 		AddGameObject(mb, eColliderLayer::BackGround);
-
-//		mbg->SetImage(L"1-11", L"11.bmp");
+		mbg->SetImage(L"1-BbackGround", L"BbackGround.bmp");
 		mb->SetImage(L"1-1", L"1-1.bmp");
-		AddGameObject(new Player, eColliderLayer::Player);
-		AddGameObject(new Monster, eColliderLayer::Monster);
 
+		ya::object::Instantiate<Player>(eColliderLayer::Player);
+		mons[0] = ya::object::Instantiate<Monster>(Vector2{500,700}, eColliderLayer::Monster);
+		mons[1] = ya::object::Instantiate<Monster>(Vector2{ 800,700 }, eColliderLayer::Monster);
+
+
+		//AddGameObject(new Player, eColliderLayer::Player);
+		//AddGameObject(new Monster, eColliderLayer::Monster);
 
 		CollisionManager::SetLayar(eColliderLayer::Player, eColliderLayer::Monster, true);
 		CollisionManager::SetLayar(eColliderLayer::Player_Projecttile, eColliderLayer::Monster, true);
-
-
-		CollisionManager::SetLayar(eColliderLayer::Player, eColliderLayer::Monster, true);
 	}
 	void PlayScene::Tick()
 	{
@@ -41,6 +43,12 @@ namespace ya
 		{
 			SceneManager::ChangeScene(eSceneType::End);
 		}
+
+		if (KEY_DOWN(P))
+		{
+			ya::object::Destroy(mons[0]);
+		}
+
 	}
 	void PlayScene::Render(HDC hdc)
 	{

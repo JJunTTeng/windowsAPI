@@ -10,6 +10,7 @@ namespace ya
 		static void Initalize();
 		static void Tick();
 		static void Render(HDC hdc);
+		static void DestroyGameObject();
 		static void Release();
 
 		static Scene* GetPlayScene() { return mPlayScene; }

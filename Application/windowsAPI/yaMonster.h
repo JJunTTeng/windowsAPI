@@ -7,6 +7,7 @@ namespace ya
 	{
 	public:
 		Monster();
+		Monster(Vector2 position);
 		~Monster();
 
 		virtual void Tick()override;

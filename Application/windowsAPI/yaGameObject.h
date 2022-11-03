@@ -10,6 +10,7 @@ namespace ya
 	{
 	public:
 		GameObject();
+		GameObject(Vector2 position);
 		virtual ~GameObject();
 
 		virtual void Initialize();

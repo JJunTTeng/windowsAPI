@@ -2,7 +2,7 @@
 #include "yaScene.h"
 namespace ya
 {
-	//class Image;
+	class Monster;
 	class PlayScene : public Scene
 	{
 	public:
@@ -16,7 +16,7 @@ namespace ya
 		virtual void Exit();
 
 	private:
-	//	Image* mImages;
+		Monster* mons[2];
 	};
 }
 

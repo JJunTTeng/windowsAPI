@@ -3,6 +3,7 @@
 #include "yaTitleScene.h"
 #include "yaPlayScene.h"
 #include "yaEndScene.h"
+#include "yaObject.h"
 
 namespace ya
 {
@@ -17,6 +18,7 @@ namespace ya
 		mScenes[(UINT)eSceneType::Title] = new TitleScene();
 		mScenes[(UINT)eSceneType::Play] = new PlayScene();
 		mScenes[(UINT)eSceneType::End] = new EndScene();
+		ChangeScene(eSceneType::Play);
 
 		for (int i = 0; i <= (UINT)eSceneType::End; i++)
 		{
@@ -28,7 +30,6 @@ namespace ya
 
 
 
-		ChangeScene(eSceneType::Play);
 		//업캐스팅
 		//다운캐스팅
 
@@ -42,6 +43,10 @@ namespace ya
 	{
 		//현재 씬을 랜더
 		mPlayScene->Render(hdc);
+	}
+	void SceneManager::DestroyGameObject()
+	{
+		ya::object::Release();
 	}
 	void SceneManager::Release()
 	{

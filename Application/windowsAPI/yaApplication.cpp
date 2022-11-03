@@ -38,11 +38,15 @@ namespace ya
 
 
 		SceneManager::Render(mWindowData.backBuffer);
+		Camera::Render(mWindowData.backBuffer);
 		Input::Render(mWindowData.backBuffer);
 		Time::Render(mWindowData.backBuffer);
 
 		//이미지 화면에 출력해주는 함수
 		BitBlt(mWindowData.hdc, 0, 0, mWindowData.width, mWindowData.height, mWindowData.backBuffer, 0, 0, SRCCOPY);
+
+		//gameObject 삭제
+		SceneManager::DestroyGameObject();
 	}
 
 	ya::Application::Application()

@@ -24,8 +24,11 @@ namespace ya
 	void PlayerBackGround::Render(HDC hdc)
 	{
 
+		SetScales(Vector2(2.0f, 2.0f));
+
 		Vector2 pos = GetPos();
 		Vector2 Scale = GetScale();
+
 
 		//Vector2 finalPos;
 		//finalPos.x = (pos.x - image->GetWidth() * (Scale.x / 2.0f));

@@ -18,6 +18,7 @@ namespace ya
 
 	private:
 		float mSpeed;
+		float mAilveTime;
 	};
 	
 }

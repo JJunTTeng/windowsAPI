@@ -8,6 +8,7 @@ namespace ya
 {
 	Missile::Missile()
 		:mSpeed(1.0f)
+		, mAilveTime(1.0f)
 	{
 		SetPos({ 100.0f,100.0f });
 		SetScales({ 20.0f,20.0f });
@@ -22,13 +23,17 @@ namespace ya
 	}
 	void Missile::Tick()
 	{
-		Vector2 pos = GetPos();
-		
-		pos.x += 1000.0f * Time::DeltaTime();
+		GameObject::Tick();
+		mAilveTime -= Time::DeltaTime();
+		if (mAilveTime <= 0.0f)
+		{
+			this->Death();
+		}
 
+		Vector2 pos = GetPos();		
+		pos.x += 1000.0f * Time::DeltaTime();
 		SetPos(pos);
 
-		GameObject::Tick();
 	}
 	void Missile::Render(HDC hdc)
 	{

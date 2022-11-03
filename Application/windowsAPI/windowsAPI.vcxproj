@@ -150,6 +150,7 @@
     <ClInclude Include="yameteorManager.h" />
     <ClInclude Include="yaMissile.h" />
     <ClInclude Include="yaMonster.h" />
+    <ClInclude Include="yaObject.h" />
     <ClInclude Include="yaPlayer.h" />
     <ClInclude Include="yaPlayerBackGround.h" />
     <ClInclude Include="yaPlayScene.h" />

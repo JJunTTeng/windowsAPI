@@ -14,15 +14,17 @@ namespace ya
 		virtual void Initialize();
 		virtual void Tick();
 		virtual void Render(HDC hdc);
+	
 
 		virtual void Enter(); //내씬으로 변경 됬을때마다
 		virtual void Exit();
 
 		void AddGameObject(GameObject* object , eColliderLayer type);
 		std::vector<GameObject*>& GetGameObjects(eColliderLayer type) { return mObjects[(UINT)type]; }
+		std::vector<std::vector<GameObject*>>& GetGameObjects() { return mObjects; }
 	private:
 		std::vector<std::vector<GameObject*>> mObjects;
 	};
 
-	typedef std::vector<GameObject*> LayerObjects;
+	//typedef std::vector<GameObject*> LayerObjects;
 }

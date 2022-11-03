@@ -3,7 +3,14 @@ namespace ya
 {
 	GameObject::GameObject()
 		: mPos{0.0f,0.0f}, 
-		  mScale{1.0f,1.0f}
+		  mScale{1.0f,1.0f},
+		  mDead(false)
+	{
+	}
+	GameObject::GameObject(Vector2 position)
+		:   mPos(position),
+			mScale{ 1.0f,1.0f },
+			mDead(false)
 	{
 	}
 	GameObject::~GameObject()
@@ -61,8 +68,8 @@ namespace ya
 		if(component == nullptr)
 			return;
 
-		component->mOwner = this;
 		mComponents.push_back(component);
+		component->mOwner = this;
 		
 	}
 }
