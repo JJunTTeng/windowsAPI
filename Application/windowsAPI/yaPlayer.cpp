@@ -77,37 +77,37 @@ namespace ya
 	}
 	void Player::Render(HDC hdc)
 	{
-		Vector2 pos = Camera::CalculatePos(GetPos());
-		Vector2 Scale = GetScale();
+		//Vector2 pos = Camera::CalculatePos(GetPos());
+		//Vector2 Scale = GetScale();
 
-		HPEN mPen = CreatePen(PS_SOLID, 1, RGB(51, 0, 153));
-		PEN pen(hdc, mPen);
+		//HPEN mPen = CreatePen(PS_SOLID, 1, RGB(51, 0, 153));
+		//PEN pen(hdc, mPen);
 
-		HBRUSH mBrush = CreateSolidBrush(RGB(153, 102, 204));
-		BRUSH brush(hdc, mBrush);
+		//HBRUSH mBrush = CreateSolidBrush(RGB(153, 102, 204));
+		//BRUSH brush(hdc, mBrush);
 
-		//Rectangle(hdc, pos.x, pos.y, pos.x + Scale.x, pos.y + Scale.y);
+		////Rectangle(hdc, pos.x, pos.y, pos.x + Scale.x, pos.y + Scale.y);
 
 
 
-		//크기변경 x
-		//BitBlt(hdc, pos.x, pos.y, mImage->GetWidth(), mImage->GetHeight(), mImage->GetDC(), 0, 0, SRCCOPY);
+		////크기변경 x
+		////BitBlt(hdc, pos.x, pos.y, mImage->GetWidth(), mImage->GetHeight(), mImage->GetDC(), 0, 0, SRCCOPY);
 
-		Vector2 finalPos;
-		finalPos.x = (pos.x - mImage->GetWidth() * (Scale.x / 2.0f));
-		finalPos.y = (pos.y - mImage->GetHeight() * (Scale.y / 2.0f));
+		//Vector2 finalPos;
+		//finalPos.x = (pos.x - mImage->GetWidth() * (Scale.x / 2.0f));
+		//finalPos.y = (pos.y - mImage->GetHeight() * (Scale.y / 2.0f));
 
-		Vector2 rect;
-		rect.x = mImage->GetWidth() * Scale.x;
-		rect.y = mImage->GetHeight() * Scale.y;
+		//Vector2 rect;
+		//rect.x = mImage->GetWidth() * Scale.x;
+		//rect.y = mImage->GetHeight() * Scale.y;
 
-		//TransparentBlt(hdc, finalPos.x, finalPos.y,rect.x,rect.y,
+		////TransparentBlt(hdc, finalPos.x, finalPos.y,rect.x,rect.y,
+		////	mImage->GetDC(), 0, 0,mImage->GetWidth(), mImage->GetHeight(), 
+		////	RGB(0, 116, 116));
+
+		//		TransparentBlt(hdc, finalPos.x, finalPos.y,rect.x,rect.y,
 		//	mImage->GetDC(), 0, 0,mImage->GetWidth(), mImage->GetHeight(), 
-		//	RGB(0, 116, 116));
-
-				TransparentBlt(hdc, finalPos.x, finalPos.y,rect.x,rect.y,
-			mImage->GetDC(), 0, 0,mImage->GetWidth(), mImage->GetHeight(), 
-			RGB(147, 187,236));
+		//	RGB(147, 187,236));
 		GameObject::Render(hdc);
 	}
 	void Player::OnCollisionEnter(Collider* other)

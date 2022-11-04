@@ -49,6 +49,8 @@ namespace ya
 			ya::object::Destroy(mons[0]);
 		}
 
+		ya::object::Destroy(mons[0], 3.0f);
+
 	}
 	void PlayScene::Render(HDC hdc)
 	{

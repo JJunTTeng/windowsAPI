@@ -6,6 +6,8 @@
 #include <map>
 #include <stdlib.h>
 #include <time.h>
+#include <functional>
+
 #include "def.h"
 
 #include "Maths.h"

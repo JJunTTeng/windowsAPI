@@ -32,6 +32,11 @@ namespace ya
 			gameObj->Death();
 		}
 
+		static __forceinline void Destroy(GameObject* gameObj, float delthTime)
+		{
+			gameObj->SetDeathTime(delthTime);
+		}
+
 		static __forceinline void Release()
 		{
 			Scene* scene = SceneManager::GetPlayScene();

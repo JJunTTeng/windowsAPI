@@ -29,8 +29,9 @@ namespace ya
 		float GetSpeed() { return mSpeed; }
 		void Death() { mDead = true; }
 		bool IsDeath() { return mDead; }
-
 		void AddComponent(Component* component);
+		void SetDeathTime(float time);
+
 
 		template <typename T>
 		__forceinline T* GetComponent()
@@ -47,12 +48,16 @@ namespace ya
 			return nullptr;
 		}
 
+		void DeathLoop();
+
 	private:
 		std::vector<Component*> mComponents;
 		Vector2 mPos;
 		Vector2 mScale;
 		float mSpeed;
 		bool mDead;
+		float mDeathTime;
+		bool mDeathTimeOn;
 
 		int hp;
 	};

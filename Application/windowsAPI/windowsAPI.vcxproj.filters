@@ -145,6 +145,9 @@
     <ClInclude Include="yaObject.h">
       <Filter>Endgine\Common</Filter>
     </ClInclude>
+    <ClInclude Include="yaAnimation.h">
+      <Filter>Endgine\Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="windowsAPI.rc">
@@ -240,6 +243,9 @@
     </ClCompile>
     <ClCompile Include="yaCamera.cpp">
       <Filter>Endgine\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="yaAnimation.cpp">
+      <Filter>Endgine\Component</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
