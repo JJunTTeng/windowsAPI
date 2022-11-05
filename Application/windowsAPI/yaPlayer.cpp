@@ -13,21 +13,46 @@ namespace ya
 {
 	Player::Player()
 		: mSpeed(0.01f)
-		, mImage(nullptr)
+		 //mImage[10](nullptr)
 	{
 		SetName(L"Player");
 
 		SetPos(Vector2{ 100,700 });
 		SetScales(Vector2{ 3.0f,3.0f });
 
-		if (mImage == nullptr)
+		if (mImage[0] == nullptr)
 		{
 			//mImage = Resources::Load<Image>(L"mario", L"..\\Resources\\Images\\BigMario\\ClimbFront.bmp");
-			mImage = Resources::Load<Image>(L"mario", L"..\\Resources\\Images\\BigMario\\Idle.bmp");
+			//mImage = Resources::Load<Image>(L"mario", L"..\\Resources\\Images\\BigMario\\Idle.bmp");
+			mImage[0] = Resources::Load<Image>(L"WingMario", L"..\\Resources\\Images\\WingMario\\Idle2.bmp");
+			mImage[1] = Resources::Load<Image>(L"WingMario1", L"..\\Resources\\Images\\WingMario\\L\\Walk.bmp");
+			mImage[2] = Resources::Load<Image>(L"WingMario2", L"..\\Resources\\Images\\WingMario\\R\\Walk.bmp");
+
 
 			//Resources<Image>::Load(L"mario", L"..\\Resources\\Images\\mario.bmp");
 		}
-		AddComponent(new Animator);
+		
+		mAnimator = new Animator();
+		mAnimator->CreateAnimation(L"Idle", mImage[0],
+			Vector2(0.0f,0.0f), Vector2(mImage[0]->GetWidth() / 11, mImage[0]->GetHeight()),
+			Vector2(0.0f, 0.0f), 11, 0.1f);
+
+		mAnimator->CreateAnimation(L"LWalk", mImage[1],
+			Vector2(0.0f, 0.0f), Vector2(mImage[1]->GetWidth() / 18, mImage[1]->GetHeight()/2),
+			Vector2(0.0f, 0.0f), 18, 0.1f);
+
+		mAnimator->CreateAnimation(L"RWalk", mImage[2],
+			Vector2(0.0f, 0.0f), Vector2(mImage[2]->GetWidth() / 18, mImage[2]->GetHeight()/2),
+			Vector2(0.0f, 0.0f), 18, 0.1f);
+
+
+		mAnimator->Play(L"Idle", true);
+
+		mAnimator->mCompleteEvent = std::bind(&Player::WalkComplite, this);
+			
+			//0 116 116 , 1761 * 148 / 11 , 160.09
+
+		AddComponent(mAnimator);
 		AddComponent(new Collider);
 
 		
@@ -44,11 +69,12 @@ namespace ya
 		if (KEY_PREESE(UP))
 		{
 			pos.y -= 300.0f * Time::DeltaTime();
-			
+		
 		}
 		if (KEY_PREESE(DOWN))
 		{
 			pos.y += 300.0f * Time::DeltaTime();
+			
 		}
 		if (KEY_PREESE(LEFT))
 		{
@@ -58,6 +84,30 @@ namespace ya
 		{
 			pos.x += 300.0f * Time::DeltaTime();
 		}
+
+
+		if (KEY_DOWN(UP))
+		{
+			//pos.y -= 300.0f * Time::DeltaTime();
+
+		}
+		if (KEY_DOWN(DOWN))
+		{
+			//pos.y += 300.0f * Time::DeltaTime();
+
+		}
+		if (KEY_DOWN(LEFT))
+		{
+		//	pos.x -= 300.0f * Time::DeltaTime();
+			mAnimator->Play(L"LWalk", true);
+		}
+		if (KEY_DOWN(RIGHT))
+		{
+			//pos.x += 300.0f * Time::DeltaTime();
+			mAnimator->Play(L"RWalk", true);
+		}
+
+
 		if (KEY_DOWN(A))
 		{
 			Missile* missile = new Missile();
@@ -69,10 +119,9 @@ namespace ya
 
 
 			missile->SetPos(GetPos());
-			missile->SetPos(Vector2(GetPos().x + (mImage->GetWidth()), GetPos().y + (mImage->GetHeight() / 2) - missile->GetScale().y / 2));
+			missile->SetPos(Vector2(GetPos().x + (mImage[0]->GetWidth()), GetPos().y + (mImage[0]->GetHeight() / 2) - missile->GetScale().y / 2));
 
 		}
-
 		SetPos(pos);
 	}
 	void Player::Render(HDC hdc)
@@ -117,6 +166,9 @@ namespace ya
 	{
 	}
 	void Player::OnCollisionExit(Collider* other)
+	{
+	}
+	void Player::WalkComplite()
 	{
 	}
 }

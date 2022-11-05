@@ -32,21 +32,21 @@ namespace ya
 		virtual void Render(HDC hdc) override;
 
 		Animation* FindAnimation(const std::wstring& name);
-		void CreateAnimation(const std::wstring& name, Image* image,Vector2 leftTop, Vector2  size, Vector2 offset, float coulumnLength, UINT spriteLeghth
+		void CreateAnimation(const std::wstring& name, Image* image,Vector2 leftTop, Vector2  size, Vector2 offset,  UINT spriteLeghth
 							,float duration, bool bAffectedCamera = true);
-		void Play(std::wstring& name, bool bLoop);
+		void Play(const std::wstring& name, bool bLoop = false);
 	public:
 		Event mStartEvent;
-		Event mompleteEvent;
+		Event mCompleteEvent;
 		Event mEndEvent;
 
 	private:
 		Image* mImage;
 
 	private:
-		std::map<const std::wstring&, Animation*> mAnimations;
+		std::map<std::wstring, Animation*> mAnimations;
 		Animation* mPlayAnimation;
-		bool mLoop;
+		bool mbLoop;
 	};
 }
 

@@ -31,7 +31,7 @@ namespace ya
 		 void Tick() ;
 		 void Render(HDC hdc) ;
 
-		 void Create(Image* image, Vector2 leftTop, Vector2  size, Vector2 offset, float coulumnLength, UINT spriteLeghth
+		 void Create(Image* image, Vector2 leftTop, Vector2  size, Vector2 offset,  UINT spriteLeghth
 			 , float duration, bool bAffectedCamera = true);
 		 void Reset();
 		 bool isComplete() { return mbComplete; }

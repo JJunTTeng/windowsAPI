@@ -61,16 +61,12 @@ namespace ya
 	}
 	void SceneManager::ChangeScene(eSceneType type)
 	{
-		if (mPlayScene == nullptr)
-		{
-			mPlayScene = mScenes[(UINT)eSceneType::Play];
-		}
-
-		else
-		{
+		if (mScenes[(UINT)type] == nullptr)
+			return;
+		
 			mPlayScene->Exit();
 			mPlayScene = mScenes[(UINT)type];
-		}
+		
 
 		mPlayScene->Enter();
 	}

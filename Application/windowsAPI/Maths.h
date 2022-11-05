@@ -27,8 +27,18 @@ namespace ya
 		Vector2() = default;
 		~Vector2() = default;
 
+		void operator +=(const Vector2& other)
+		{
+			x += other.x;
+			y += other.y;
+		}
+		void operator -=(const Vector2& other)
+		{
+			x -= other.x;
+			y -= other.y;
+		}
 
-		Vector2 operator +(Vector2 other)
+		Vector2 operator +(const Vector2& other)
 		{
 			Vector2 temp;
 			temp.x = x + other.x;
@@ -37,7 +47,7 @@ namespace ya
 			return temp;
 		}
 
-		Vector2 operator -(Vector2 other)
+		Vector2 operator -(const Vector2& other)
 		{
 			Vector2 temp;
 			temp.x = x - other.x;
@@ -46,7 +56,7 @@ namespace ya
 			return temp;
 		}
 
-		Vector2 operator /(const float value)
+		Vector2 operator /(const float& value)
 		{
 			Vector2 temp;
 

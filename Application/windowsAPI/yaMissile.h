@@ -2,7 +2,7 @@
 #include "yaGameObject.h"
 namespace ya
 {
-	
+	class Image;
 	class Missile : public GameObject
 	{
 	public:
@@ -19,6 +19,7 @@ namespace ya
 	private:
 		float mSpeed;
 		float mAilveTime;
+		Image* mImage;
 	};
 	
 }

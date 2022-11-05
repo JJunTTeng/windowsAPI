@@ -3,7 +3,9 @@
 #include "yaCollider.h"
 #include "yaGameObject.h"
 #include "yaCamera.h"
-
+#include "yaAnimator.h"
+#include "yaResources.h"
+#include "yaImage.h"
 namespace ya
 {
 	Missile::Missile()
@@ -17,6 +19,18 @@ namespace ya
 		Vector2 colpos = col->GetPos();
 		col->SetScale(Vector2(20.0f, 20.0f));
 		AddComponent(col);
+
+		Animator* ani = new Animator;
+		
+		if (mImage == nullptr)
+		{
+			mImage = Resources::Load<Image>(L"misile", L"..\\Resources\\Images\\WingMario\\Idle2.bmp");
+		}
+		ani->CreateAnimation(L"Idle", mImage,
+			Vector2(0.0f, 0.0f), Vector2(mImage->GetWidth() / 11, mImage->GetHeight()),
+			Vector2(0.0f, 0.0f), 11, 0.1f);
+
+		ani->Play(L"misile", true);
 	}
 	Missile::~Missile()
 	{
@@ -37,11 +51,11 @@ namespace ya
 	}
 	void Missile::Render(HDC hdc)
 	{
-		Vector2 Pos = GetPos();
-		Vector2 Scale = GetScale();
-		Pos = Camera::CalculatePos(Pos);
+		//Vector2 Pos = GetPos();
+		//Vector2 Scale = GetScale();
+		//Pos = Camera::CalculatePos(Pos);
 
-		Ellipse(hdc, Pos.x, Pos.y , Pos.x + +Scale.x, Pos.y + Scale.y);
+		//Ellipse(hdc, Pos.x, Pos.y , Pos.x + +Scale.x, Pos.y + Scale.y);
 
 		GameObject::Render(hdc);
 	}

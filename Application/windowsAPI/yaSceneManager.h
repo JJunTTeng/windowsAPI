@@ -14,7 +14,7 @@ namespace ya
 		static void Release();
 
 		static Scene* GetPlayScene() { return mPlayScene; }
-		static void SetPlayScene(eSceneType number) { mPlayScene = mScenes[(UINT)number]; }
+		static void SetPlayScene(Scene* playScene) { mPlayScene = playScene; }
 		static void ChangeScene(eSceneType type);
 
 	private:
