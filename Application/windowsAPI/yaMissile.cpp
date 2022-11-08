@@ -44,8 +44,17 @@ namespace ya
 			this->Death();
 		}
 
-		Vector2 pos = GetPos();		
-		pos.x += 1000.0f * Time::DeltaTime();
+		float radian = DegreeToRadian(90.0f);
+
+		float speed = 100.0f;
+		Vector2 pos = GetPos();
+		//Vector2 dir(1.0f, 0.0f);
+		mDir = PI / 2.0f;
+
+		pos.x = speed * cosf(mDir) * Time::DeltaTime();
+		pos.y -= speed * sinf(mDir) * Time::DeltaTime();
+
+		//pos.x += 1000.0f * Time::DeltaTime();
 		SetPos(pos);
 
 	}

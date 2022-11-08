@@ -47,9 +47,9 @@ namespace ya
 
 
 		mAnimator->Play(L"Idle", true);
+		mAnimator->FindEvents(L"RWalk")->mCompleteEvent = std::bind(&Player::WalkComplite, this);
 
-		mAnimator->mCompleteEvent = std::bind(&Player::WalkComplite, this);
-			
+		//mAnimator->mCompleteEvent = std::bind(&Player::WalkComplite, this);
 			//0 116 116 , 1761 * 148 / 11 , 160.09
 
 		AddComponent(mAnimator);

@@ -19,6 +19,7 @@ namespace ya
 	private:
 		float mSpeed;
 		float mAilveTime;
+		float mDir;
 		Image* mImage;
 	};
 	
