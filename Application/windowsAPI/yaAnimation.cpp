@@ -32,6 +32,7 @@ namespace ya
     {
         GameObject* GameObj = mAnimator->GetOwner();
         Vector2 pos = GameObj->GetPos();
+        Vector2 scale = GameObj->GetScale();
 
         if (mAffectedCamera)
             pos = Camera::CalculatePos(pos);
@@ -66,7 +67,7 @@ namespace ya
             (int)mSpriteSheet[mSpriteIndex].leftTop.y,
             (int)mSpriteSheet[mSpriteIndex].size.x,
             (int)mSpriteSheet[mSpriteIndex].size.y,
-            RGB(0, 116, 116));
+            RGB(mSpriteSheet[mSpriteIndex].color.R, mSpriteSheet[mSpriteIndex].color.G, mSpriteSheet[mSpriteIndex].color.B));
             //(int)mSpriteSheet[mSpriteIndex].size.x,
             //(int)mSpriteSheet[mSpriteIndex].size.y,
             //func
@@ -85,6 +86,26 @@ namespace ya
             sprite.size = size;
             sprite.offset = offset;
             sprite.duration = duration;
+
+            mSpriteSheet.push_back(sprite);
+        }
+    }
+
+    void Animation::Create(Image* image, Vector2 leftTop, Vector2 size, Vector2 offset, UINT spriteLeghth,
+        float duration, yaRGB COLOR, bool bAffectedCamera)
+    {
+        mImage = image;
+        mAffectedCamera = bAffectedCamera;
+
+        for (size_t i = 0; i < spriteLeghth; i++)
+        {
+            Sprite sprite;
+            sprite.leftTop.x = leftTop.x + (size.x * (float)i);
+            sprite.leftTop.y = leftTop.y;
+            sprite.size = size;
+            sprite.offset = offset;
+            sprite.duration = duration;
+            sprite.color = COLOR;
 
             mSpriteSheet.push_back(sprite);
         }

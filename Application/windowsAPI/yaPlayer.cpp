@@ -35,20 +35,20 @@ namespace ya
 		mAnimator = new Animator();
 		mAnimator->CreateAnimation(L"Idle", mImage[0],
 			Vector2(0.0f,0.0f), Vector2(mImage[0]->GetWidth() / 11, mImage[0]->GetHeight()),
-			Vector2(0.0f, 0.0f), 11, 0.1f);
+			Vector2(0.0f, 0.0f), 11, 0.1f, ya::yaRGB(0, 116, 116));
 
 		mAnimator->CreateAnimation(L"LWalk", mImage[1],
 			Vector2(0.0f, 0.0f), Vector2(mImage[1]->GetWidth() / 18, mImage[1]->GetHeight()/2),
-			Vector2(0.0f, 0.0f), 18, 0.1f);
+			Vector2(0.0f, 0.0f), 18, 0.1f, ya::yaRGB(0, 116, 116));
 
 		mAnimator->CreateAnimation(L"RWalk", mImage[2],
 			Vector2(0.0f, 0.0f), Vector2(mImage[2]->GetWidth() / 18, mImage[2]->GetHeight()/2),
-			Vector2(0.0f, 0.0f), 18, 0.1f);
+			Vector2(0.0f, 0.0f), 18, 0.1f,ya::yaRGB(0,116,116));
 
 
 		mAnimator->Play(L"Idle", true);
-		mAnimator->FindEvents(L"RWalk")->mCompleteEvent = std::bind(&Player::WalkComplite, this);
-
+		//mAnimator->FindEvents(L"RWalk")->mCompleteEvent = std::bind(&Player::WalkComplite, this);
+		mAnimator->GetCompliteEvents(L"RWalk") = std::bind(&Player::WalkComplite, this);
 		//mAnimator->mCompleteEvent = std::bind(&Player::WalkComplite, this);
 			//0 116 116 , 1761 * 148 / 11 , 160.09
 
@@ -115,11 +115,9 @@ namespace ya
 			Scene* playScene = SceneManager::GetPlayScene();
 
 			playScene->AddGameObject(missile,eColliderLayer::Player_Projecttile);
-			missile->SetPos(GetPos());
-
-
-			missile->SetPos(GetPos());
-			missile->SetPos(Vector2(GetPos().x + (mImage[0]->GetWidth()), GetPos().y + (mImage[0]->GetHeight() / 2) - missile->GetScale().y / 2));
+			//missile->SetPos(GetPos());
+			//missile->SetPos(Vector2(GetPos().x + (mImage[0]->GetWidth()), GetPos().y + (mImage[0]->GetHeight() / 2) - missile->GetScale().y / 2));
+			missile->SetPos(Vector2(GetPos().x , GetPos().y + (mImage[0]->GetHeight() / 2) - missile->GetScale().y / 2));
 
 		}
 		SetPos(pos);
@@ -170,5 +168,6 @@ namespace ya
 	}
 	void Player::WalkComplite()
 	{
+		//mAnimator->Play(L"Idle", true);
 	}
 }

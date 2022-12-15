@@ -20,6 +20,5 @@ namespace ya
 	private:
 		std::wstring mPath;
 		std::wstring mKey;
-
 	};
 }

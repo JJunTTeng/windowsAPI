@@ -42,6 +42,8 @@ namespace ya
 		Animation* FindAnimation(const std::wstring& name);
 		void CreateAnimation(const std::wstring& name, Image* image,Vector2 leftTop, Vector2  size, Vector2 offset,  UINT spriteLeghth
 							,float duration, bool bAffectedCamera = true);
+		void CreateAnimation(const std::wstring& name, Image* image, Vector2 leftTop, Vector2  size, Vector2 offset, UINT spriteLeghth
+			, float duration, yaRGB COLOR, bool bAffectedCamera = true);
 		void Play(const std::wstring& name, bool bLoop = false);
 
 		Events* FindEvents(const std::wstring key);

@@ -30,11 +30,13 @@ namespace ya
 		mons[1] = ya::object::Instantiate<Monster>(Vector2{ 800,700 }, eColliderLayer::Monster);
 
 
+		CollisionManager::SetLayar(eColliderLayer::Player, eColliderLayer::Monster, true);
+		CollisionManager::SetLayar(eColliderLayer::Player_Projecttile, eColliderLayer::Monster, true);
+
 		//AddGameObject(new Player, eColliderLayer::Player);
 		//AddGameObject(new Monster, eColliderLayer::Monster);
 
-		CollisionManager::SetLayar(eColliderLayer::Player, eColliderLayer::Monster, true);
-		CollisionManager::SetLayar(eColliderLayer::Player_Projecttile, eColliderLayer::Monster, true);
+
 	}
 	void PlayScene::Tick()
 	{
@@ -64,6 +66,8 @@ namespace ya
 	}
 	void PlayScene::Enter()
 	{
+		CollisionManager::SetLayar(eColliderLayer::Player, eColliderLayer::Monster, true);
+		CollisionManager::SetLayar(eColliderLayer::Player_Projecttile, eColliderLayer::Monster, true);
 	}
 	void PlayScene::Exit()
 	{

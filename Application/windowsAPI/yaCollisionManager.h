@@ -12,6 +12,7 @@ namespace ya
 		static void LayerCollision(Scene* scene, eColliderLayer left, eColliderLayer right);
 		static void ColliderCollision(Collider* left, Collider* right);
 		static bool Intersect(Collider* left, Collider* right);
+		static void Clear();
 	private:
 		static WORD mMatrix[_COLLIDER_LAYER];
 		static std::map<UINT64, bool> mCollisionInformation;

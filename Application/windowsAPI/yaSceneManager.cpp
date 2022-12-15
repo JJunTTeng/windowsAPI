@@ -2,6 +2,7 @@
 #include "yaLogoScene.h"
 #include "yaTitleScene.h"
 #include "yaPlayScene.h"
+#include "yaToolScene.h"
 #include "yaEndScene.h"
 #include "yaObject.h"
 
@@ -17,10 +18,12 @@ namespace ya
 		mScenes[(UINT)eSceneType::Logo] = new LogoScene();
 		mScenes[(UINT)eSceneType::Title] = new TitleScene();
 		mScenes[(UINT)eSceneType::Play] = new PlayScene();
+		mScenes[(UINT)eSceneType::Tool] = new ToolScene();
 		mScenes[(UINT)eSceneType::End] = new EndScene();
-		ChangeScene(eSceneType::Play);
+		
 
-		for (int i = 0; i <= (UINT)eSceneType::End; i++)
+
+		for (UINT i = (UINT)eSceneType::Logo; i <= (UINT)eSceneType::End; i++)
 		{
 			if (mScenes[i] == nullptr)
 				continue;
@@ -28,7 +31,7 @@ namespace ya
 			mScenes[i]->Initialize();
 		}
 
-
+		ChangeScene(eSceneType::Play);
 
 		//업캐스팅
 		//다운캐스팅

@@ -164,4 +164,10 @@ namespace ya
 
 		return false;
 	}
+	void CollisionManager::Clear()
+	{
+		memset(mMatrix, 0, sizeof(WORD) * _COLLIDER_LAYER);
+		mCollisionInformation.clear();
+
+	}
 }

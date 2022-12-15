@@ -8,6 +8,7 @@ enum class eSceneType
 	Title,
 	Logo,
 	Play,
+	Tool,
 	End,
 	MAX
 };

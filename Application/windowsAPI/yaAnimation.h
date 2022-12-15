@@ -14,6 +14,7 @@ namespace ya
 			Vector2 size;   //¿ÃπÃ¡ˆ ≥–¿Ã
 			Vector2 offset;
 			float duration;
+			yaRGB color;
 
 			Sprite()
 				: leftTop(0.0f, 0.0f)
@@ -31,8 +32,11 @@ namespace ya
 		 void Tick() ;
 		 void Render(HDC hdc) ;
 
-		 void Create(Image* image, Vector2 leftTop, Vector2  size, Vector2 offset,  UINT spriteLeghth
+		 void Create(Image* image, Vector2 leftTop, Vector2  size, Vector2 offset, UINT spriteLeghth
 			 , float duration, bool bAffectedCamera = true);
+		 void Create(Image* image, Vector2 leftTop, Vector2  size, Vector2 offset,  UINT spriteLeghth
+			 , float duration, yaRGB COLOR, bool bAffectedCamera = true);
+
 		 void Reset();
 		 bool isComplete() { return mbComplete; }
 		 void SetAnimator(Animator* animator) { mAnimator = animator; }
@@ -47,7 +51,6 @@ namespace ya
 		bool mStart;
 		bool mEnd;
 		bool mAffectedCamera;
-
 	};
 
 

@@ -55,6 +55,7 @@ namespace ya
 
 	private:
 		static std::vector<Key> mKeys;
+		static Vector2 mMousePos;
 	};
 }
 

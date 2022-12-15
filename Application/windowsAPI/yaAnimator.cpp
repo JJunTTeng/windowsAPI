@@ -72,6 +72,7 @@ namespace ya
 		animation = new Animation();
 		animation->Create(image, leftTop, size, offset,
 			 spriteLeghth, duration, bAffectedCamera);
+
 		
 		animation->SetName(name);
 		animation->SetAnimator(this);
@@ -81,6 +82,32 @@ namespace ya
 		Events* events = new Events();
 		mEvents.insert(std::make_pair(name, events));
 	}
+
+	void Animator::CreateAnimation(const std::wstring& name, Image* image, Vector2 leftTop, Vector2 size, Vector2 offset,
+		UINT spriteLeghth, float duration, yaRGB COLOR, bool bAffectedCamera)	//568 48
+	{
+		Animation* animation = FindAnimation(name);
+		if (animation != nullptr)
+		{
+			MessageBox(nullptr, L"중복 키 애니메이션 생성", L"이미지 애니메이션 실패!", MB_OK);
+			return;
+		}
+
+		animation = new Animation();
+		animation->Create(image, leftTop, size, offset,
+			spriteLeghth, duration, COLOR, bAffectedCamera);
+
+
+		animation->SetName(name);
+		animation->SetAnimator(this);
+
+		mAnimations.insert(std::make_pair(name, animation));
+
+		Events* events = new Events();
+		mEvents.insert(std::make_pair(name, events));
+	}
+
+
 	void Animator::Play(const std::wstring& name, bool bLoop)
 	{
 		Animator::Events* events = FindEvents(name);

@@ -5,16 +5,22 @@
 
 namespace ya
 {
-	inline float DegreeToRadian(float degree)
+	struct yaRGB
 	{
-		return degree * PI / 180.0f;
-	}
+		yaRGB(int R, int G,int B)
+		{
+			this->R = R;
+			this->G = G;
+			this->B = B;
+		}
 
-	inline float RadianToDegree(float radian)
-	{
-		return radian * (180.0f / PI);
-	}
+		int R;
+		int G;
+		int B;
 
+		yaRGB() = default;
+		~yaRGB() = default;
+	};
 
 	struct Vector2
 	{
@@ -80,4 +86,27 @@ namespace ya
 			return temp;
 		}
 	};
+
+
+	inline float DegreeToRadian(float degree)
+	{
+		return degree * PI / 180.0f;
+	}
+
+	inline float RadianToDegree(float radian)
+	{
+		return radian * (180.0f / PI);
+	}
+
+	inline Vector2 Rotate(const Vector2 value, float degree)
+	{
+		Vector2 ret = Vector2::Zero;
+
+		float radian = DegreeToRadian(degree);
+
+		ret.x = value.x * cosf(radian) - value.y * sinf(radian);
+		ret.y = value.x * cosf(radian) + value.y * sinf(radian);
+
+		return ret;
+	}
 }
